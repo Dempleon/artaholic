@@ -17,11 +17,6 @@
     "url": "https://github.com/Dempleon/artaholic/issues"
   },
   "homepage": "https://github.com/Dempleon/artaholic#readme",
-  "dependencies": {
-    "axios": "^1.2.1",
-    "bootstrap": "^5.2.3",
-    "dotenv": "^16.0.3"
-  },
   "devDependencies": {
     "concurrently": "^5.1.0"
   }
