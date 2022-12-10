@@ -122,10 +122,10 @@ const resolvers = {
     },
     // edit an art's price by id TODO: is this necessary or not?
     updateArt: async (parent, { _id, price }) => {
-      const price = new Art({ price });
+      const newPrice = new Art({ price });
       await Art.findByIdAndUpdate(
         _id,
-        { $push: { price: price } },
+        { $push: { price: newPrice } },
         { new: true }
       );
     },

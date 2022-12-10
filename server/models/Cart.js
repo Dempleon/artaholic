@@ -1,11 +1,10 @@
 const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
 
 const cartSchema = new Schema({
     // todo: fill in
     art: [
         {
-            type: Schema.types.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: 'Art'
         }
     ]
