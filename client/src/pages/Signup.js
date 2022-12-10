@@ -6,7 +6,7 @@ import { ADD_USER } from '../utils/mutations';
 import { validateEmail } from '../utils/helpers';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import '../styles/Login.css';
+import '../styles/Signup.css';
 
 function Signup(props) {
     const [formState, setFormState] = useState({ email: '', password: '' })
@@ -37,7 +37,7 @@ function Signup(props) {
     return (
         <section>
             <Link to="/login"></Link>
-            <Form onSubmit={handleFormSubmit}>
+            <Form onSubmit={handleFormSubmit} className="sign-up-form">
                 <Form.Group className="mb-3" controlId="formBasicFirstname">
                     <Form.Label>First Name</Form.Label>
                     <Form.Control onChange={handleChange} type="firstname" placeholder="First Name" />
