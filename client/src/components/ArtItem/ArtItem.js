@@ -39,5 +39,7 @@ function ArtItem(item) {
 
     return (
         //TODO: HTML part to show arts
-    )
+    );
 }
+
+export default ArtItem;
