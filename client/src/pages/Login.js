@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
-import { validateEmail } from '../../utils/helpers';
+import { validateEmail } from '../utils/helpers';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import '../styles/login.css';
@@ -37,7 +37,7 @@ function Login(props) {
 
     return (
         <section>
-            <Form onSubmit={handleFormSubmit}>
+            <Form onSubmit={handleFormSubmit} className="login-in-form">
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
                     <Form.Control onChange={handleChange} type="email" placeholder="Enter email" />
