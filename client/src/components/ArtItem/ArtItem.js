@@ -38,7 +38,22 @@ function ArtItem(item) {
     }
 
     return (
-        //TODO: HTML part to show arts
+        //TODO: HTML part to show arts with a slide(image/name/price/add to cart button/ quantity?)
+        <div className='card gallery'>
+            <Link to={`/arts/${_id}`}>
+                <img 
+                alt={artname}
+                src={`/images/${image}`}
+                />
+                <p>{name}</p>
+            </Link>
+            <div>
+                {/* TODO: determine if we need quantity for arts */}
+                <div>{quantity} {pluralize('item', quantity)} in stock</div>
+                <span>${price}</span>
+            </div>
+        <button onClick={addToCart}>Add to cart</button>
+        </div>
     );
 }
 
