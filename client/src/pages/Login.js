@@ -6,7 +6,7 @@ import Auth from '../utils/auth';
 import { validateEmail } from '../utils/helpers';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import '../styles/login.css';
+import '../styles/Login.css';
 
 
 
@@ -37,6 +37,7 @@ function Login(props) {
 
     return (
         <section>
+            <Link to="/signup"></Link>
             <Form onSubmit={handleFormSubmit} className="login-in-form">
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
