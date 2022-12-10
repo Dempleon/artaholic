@@ -80,4 +80,7 @@ function Detail() {
         idbPromise('cart', 'delete', { ...currentProduct });
     };
     
+    return (
+        
+    )
 }
