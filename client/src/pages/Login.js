@@ -52,8 +52,11 @@ function Login(props) {
                     <Form.Control onChange={handleChange} type="password" placeholder="Password" />
                 </Form.Group>
                 <Button variant="primary" type="submit">
-                    Submit
+                    Login
                 </Button>
+                <Form.Text className="text-muted">
+                    or Sign Up
+                </Form.Text>
             </Form>
         </section>
     )
