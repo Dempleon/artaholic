@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Art, Cart, Category } = require("../models"); 
+const { User, Art, Order, Category } = require("../models"); 
 // TODO: create category and order model replace Cart model
 const { signToken } = require("../utils/auth");
 const stripe = require("stripe")("TODO: STRIPE API KEY");
@@ -125,7 +125,7 @@ const resolvers = {
       const newPrice = new Art({ price });
       await Art.findByIdAndUpdate(
         _id,
-        { $push: { price: newPrice } },
+        { $push: { price: rice } },
         { new: true }
       );
     },
