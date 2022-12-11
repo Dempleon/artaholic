@@ -4,9 +4,7 @@ import Home from '../pages/Home';
 import Gallery from '../pages/Gallery';
 import Sell from '../pages/Sell';
 import Cart from '../components/Cart/Cart';
-
-
-
+import NavTabs from '../components/Nav/NavTabs';
 
 function Artaholic() {
     const [currentPage, setCurrentPage] = useState('Home');
