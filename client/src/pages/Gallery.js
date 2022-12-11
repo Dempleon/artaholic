@@ -2,7 +2,7 @@ import React, { useEffect, userEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-import Cart from '../components/Cart';
+// import Cart from '../components/Cart';
 import { useStoreContext } from '../utils/GlobalState';
 import {
     REMOVE_FROM_CART,
@@ -100,7 +100,8 @@ function Detail() {
                     />
                 </div>
             ): null}
-            {loading ? <img src={} alt="loading" /> : null}
+            {loading ? <p>Loading</p> : null}
+            {/* {loading ? <img src={''} alt="loading" placeholder='loading'/> : null} */}
         </>
     );
 }
