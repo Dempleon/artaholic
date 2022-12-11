@@ -1,14 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
-import Home from './pages/Home';
-import NavTabs from './components/Nav/NavTabs';
+import logo from "./logo.svg";
+import "./App.css";
+import Home from "./pages/Home";
+import NavTabs from "./components/Nav/NavTabs";
 
 function App() {
   return (
-    <Home/>,
-    <NavTabs/>
-  )
-
+    <>
+      <NavTabs />
+      <Home />,
+    </>
+  );
 }
 
 export default App;

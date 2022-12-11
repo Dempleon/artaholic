@@ -31,15 +31,17 @@ function NavTabs({ currentPage, handlePageChange }) {
               </NavDropdown.Item>
               <NavDropdown.Item href="#action/3.6">Sketch</NavDropdown.Item>
             </NavDropdown>
-            {AuthService.checkToken() &&
+            {AuthService.checkToken() && (
               <Nav.Link onClick={() => handlePageChange("Sell")}>Sell</Nav.Link>
-            }
+            )}
             <Nav.Link onClick={() => handlePageChange("Login")}>Login</Nav.Link>
-            <Nav.Link onClick={() => handlePageChange("Cart")}><img src={CartIcon}/></Nav.Link>
+            <Nav.Link onClick={() => handlePageChange("Cart")}>
+              <img src={CartIcon} alt="cart-icon" width="20px" />
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
         <Navbar.Brand onClick={() => handlePageChange("Home")}>
-          <img src={Logo} />
+          <img src={Logo} alt="logo" />
         </Navbar.Brand>
       </Container>
     </Navbar>
