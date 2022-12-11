@@ -15,6 +15,7 @@ import { QUERY_CHECKOUT } from '../../utils/queries';
 // todo: may need to change api key into loadstrip
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
+// todo: complete cart, might have to finish CartItem first
 export default function Cart() {
 
 }
