@@ -7,6 +7,7 @@ import AuthService from "../../utils/auth";
 import Logo from "../assets/images/artaholic-r.jpeg";
 import CartIcon from "../assets/images/cart-icon.png";
 
+
 function NavTabs({ currentPage, handlePageChange }) {
   return (
     <Navbar bg="light" expand="lg">
@@ -14,12 +15,13 @@ function NavTabs({ currentPage, handlePageChange }) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link onClick={() => handlePageChange("Home")}>Home</Nav.Link>
-            <NavDropdown
+            <Nav.Link onClick={() => ("Home")}>Home</Nav.Link>
+            {/* <NavDropdown
               onClick={() => handlePageChange("Gallery")}
               title="Gallery"
               id="basic-nav-dropdown"
-            >
+            > */}
+              <NavDropdown title="Gallery" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Scenic</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Place</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.3">Human</NavDropdown.Item>
@@ -32,7 +34,7 @@ function NavTabs({ currentPage, handlePageChange }) {
               <NavDropdown.Item href="#action/3.6">Sketch</NavDropdown.Item>
             </NavDropdown>
             {AuthService.checkToken() && (
-              <Nav.Link onClick={() => handlePageChange("Sell")}>Sell</Nav.Link>
+              <Nav.Link onClick={() => handlePageChange("")}>Sell</Nav.Link>
             )}
             <Nav.Link onClick={() => handlePageChange("Login")}>Login</Nav.Link>
             <Nav.Link onClick={() => handlePageChange("Cart")}>
