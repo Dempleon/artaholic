@@ -1,8 +1,8 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Art, Cart, Category } = require("../models"); 
+const { User, Art, Order, Category } = require("../models"); 
 // TODO: create category and order model replace Cart model
 const { signToken } = require("../utils/auth");
-const stripe = require("stripe")("TODO: STRIPE API KEY");
+const stripe = require("stripe")(process.env.STRIPE);
 
 const resolvers = {
   Query: {
@@ -122,10 +122,10 @@ const resolvers = {
     },
     // edit an art's price by id TODO: is this necessary or not?
     updateArt: async (parent, { _id, price }) => {
-      const price = new Art({ price });
+      const newPrice = new Art({ price });
       await Art.findByIdAndUpdate(
         _id,
-        { $push: { price: price } },
+        { $push: { price: rice } },
         { new: true }
       );
     },
