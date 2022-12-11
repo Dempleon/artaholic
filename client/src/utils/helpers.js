@@ -28,7 +28,7 @@ export function idbPromise(storeName, action, obj) {
       store = tx.objectStore(storeName);
 
       db.onerror = function(err) {
-        cconsole.log(err)
+        console.log(err)
       }
 
       tx.oncomplete = function() {
