@@ -21,12 +21,12 @@ const userSchema = new Schema({
     },
     arts: [
         {
-            type: Schema.types.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: 'Art',
         }
     ],
     cart: {
-        type: Schema.types.OjbectId,
+        type: Schema.Types.ObjectId,
         ref: 'Cart'
     },
 })
