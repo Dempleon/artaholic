@@ -28,8 +28,13 @@ const typeDefs = gql`
     type Order {
         _id: ID
         purchaseDate: String
-        arts: [art]
+        arts: [Art]
     }
+
+    type Checkout {
+        session: ID
+      }
+    
 
     type Auth {
         token: ID
@@ -41,7 +46,7 @@ const typeDefs = gql`
         arts(
             category: ID,
             name: String
-        ): [art]
+        ): [Art]
         art(_id: ID!): Art
         user: User
         order(_id: ID!): Order
