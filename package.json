@@ -23,5 +23,8 @@
   "homepage": "https://github.com/Dempleon/artaholic#readme",
   "devDependencies": {
     "concurrently": "^5.1.0"
+  },
+  "dependencies": {
+    "react-bootstrap": "^2.7.0"
   }
 }
