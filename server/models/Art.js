@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
 const artSchema = new Schema({
-    title: {
+    name: {
         type: String,
         required: true,
         minlength: 1,
@@ -23,6 +23,10 @@ const artSchema = new Schema({
     price: {
         type: Number,
         required: true
+    }, 
+    category: {
+        type: Schema.Types.ObjectId,
+        ref: 'Category'
     }
 })
 
