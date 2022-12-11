@@ -31,6 +31,11 @@ const typeDefs = gql`
         arts: [Art]
     }
 
+    type Checkout {
+        session: ID
+      }
+    
+
     type Auth {
         token: ID
         user: User
