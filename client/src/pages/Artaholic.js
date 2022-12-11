@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import { LOGIN } from '../utils/mutations';
+import Home from '../pages/Home';
+import Gallery from '../pages/Gallery';
+import Sell from '../pages/Sell';
+import Cart from '../components/Cart/Cart';
 
 
 
@@ -14,10 +18,10 @@ function Artaholic() {
         if(currentPage === 'Gallery') {
             return <Gallery/>;
         }
-        if(currentPage === 'Login') {
-            return <Login/>;
+        if(currentPage === 'Sell'){
+            return <Sell />
         }
-        return <Cart/>; //cart-icon
+        return <Cart/>;
     };
 
     const handlePageChange = (page) => setCurrentPage(page);
