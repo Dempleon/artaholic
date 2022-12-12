@@ -7,12 +7,12 @@ export function validateEmail(email) {
 export function idbPromise(storeName, action, obj) {
 
   return new Promise((resolve, reject) => {
-    const request = window.indexedDB.open('artaholic', 1);
+    const request = window.indexedDB.open('home', 1);
     let db, tx, store;
 
     request.onupgradeneeded = function () {
       const database = request.result;
-      database.createObjectStore('art', { keyPath: '_id' });
+      database.createObjectStore('arts', { keyPath: '_id' });
       database.createObjectStore('categories', { keyPath: '_id' });
       database.createObjectStore('cart', { keyPath: '_id' });
     };
@@ -36,6 +36,11 @@ export function idbPromise(storeName, action, obj) {
       }
 
       switch(action) {
+        case 'post':
+          store.put(obj);
+          resolve(obj);
+          break;
+
         case 'put':
           store.put(obj);
           resolve(obj);
@@ -56,6 +61,11 @@ export function idbPromise(storeName, action, obj) {
           console.log('invalid action for idbPromise');
           break;
       };
+
+      tx.oncomplete = function() {
+        db.close();
+      };
+
     };
   });
 }

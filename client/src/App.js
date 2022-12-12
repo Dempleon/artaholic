@@ -33,7 +33,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  link: authLink.concat(httpLink),
+  link: process.env.NODE_ENV ? authLink.concat(httpLink) : "http://localhost:3001/graphql",
   cache: new InMemoryCache(),
 });
 
@@ -66,11 +66,11 @@ function App() {
               path="/sell"
               element={<Sell />}
               />
-               <Route 
+               {/* <Route 
               path="/arts/:id"
               // TODO: create arts page
               element={<Arts />}
-              />
+              /> */}
               </Routes>
             
           </StoreProvider>
