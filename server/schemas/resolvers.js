@@ -137,7 +137,7 @@ const resolvers = {
         throw new AuthenticationError("Incorrect username!");
       }
 
-      const correctPw = await user.isCorrectPassword(password);
+      const correctPw = await user.checkPassword(password);
 
       if (!correctPw) {
         throw new AuthenticationError("Incorrect password!");

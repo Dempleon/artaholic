@@ -6,7 +6,7 @@ import Auth from '../utils/auth';
 import { validateEmail } from '../utils/helpers';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import '../styles/login.css';
+import '../styles/Login.css';
 
 
 
