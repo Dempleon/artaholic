@@ -1,8 +1,9 @@
-Nav {
-    display:inline;
+.logo-image {
+    width: 100px;
+    height: 80px;
 }
 
-.navbar {
-    /* display: inline; */
-    background: red;
+.art-logo {
+    margin-top: -60px;
+ 
 }

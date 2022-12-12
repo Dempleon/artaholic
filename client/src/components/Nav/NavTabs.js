@@ -4,7 +4,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Container from "react-bootstrap/Container";
 import AuthService from "../../utils/auth";
-import Logo from "../assets/images/artaholic-r.jpeg";
+import Logo from "../assets/images/artaholic-r-2.png";
 import CartIcon from "../assets/images/cart-icon.png";
 import './NavTabs.css';
 
@@ -12,6 +12,7 @@ import './NavTabs.css';
 
 function NavTabs({ currentPage, handlePageChange }) {
   return (
+    <div>
     <Navbar bg="white" expand="lg" className="navbar">
       <Container>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -44,11 +45,14 @@ function NavTabs({ currentPage, handlePageChange }) {
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
+        <div className="logo-image">
         <Navbar.Brand href="/">
-          <img src={Logo} alt="logo" />
+          <img src={Logo} className="art-logo" alt="logo" />
         </Navbar.Brand>
+        </div>
       </Container>
     </Navbar>
+    </div>
   );
 }
 

@@ -1,6 +1,5 @@
 import { TypeOrFieldNameRegExp } from "@apollo/client/cache/inmemory/helpers";
 import React from "react";
-import { Col } from "react-bootstrap";
 import HomeImage from "../components/assets/images/homeimage.jpeg";
 import "../styles/Home.css";
 
@@ -9,29 +8,20 @@ const styles = {
     postion: "relative",
     float: "right",
     display: "flex",
-    marginRight: "15px",
+    margin: "80px",
   },
   image: {
-    width: "50vw",
+    width: "25vw",
   },
   containerMission: {
-    marginLeft: "50px",
+    margin: "100px",
   },
 };
 
 function Home() {
   return (
-    <section className="homepage">
-      <Col lg={6} md={12}>
-        <div className="homepage-image" style={styles.containerImg}>
-          <img
-            src={HomeImage}
-            className="homepage-pic"
-            alt="homepage-pic"
-            style={styles.image}
-          />
-        </div>
-        <div className="our-mission-values" style={styles.containerMission}>
+    <section className="d-flex homepage">
+        <div className="col-6 our-mission-values" style={styles.containerMission}>
           <h2>Our Mission & Values</h2>
           <p>
             We support artists at all stages of their artistic journey. As a
@@ -53,7 +43,14 @@ function Home() {
             community events.
           </p>
         </div>
-      </Col>
+        <div className="col-6 homepage-image" style={styles.containerImg}>
+          <img
+            src={HomeImage}
+            className="homepage-pic"
+            alt="homepage-pic"
+            style={styles.image}
+          />
+        </div>
     </section>
   );
 }
