@@ -6,16 +6,18 @@ import Container from "react-bootstrap/Container";
 import AuthService from "../../utils/auth";
 import Logo from "../assets/images/artaholic-r.jpeg";
 import CartIcon from "../assets/images/cart-icon.png";
+import './NavTabs.css';
+
 
 
 function NavTabs({ currentPage, handlePageChange }) {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="white" expand="lg" className="navbar">
       <Container>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link onClick={() => ("Home")}>Home</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
             {/* <NavDropdown
               onClick={() => handlePageChange("Gallery")}
               title="Gallery"
@@ -34,15 +36,15 @@ function NavTabs({ currentPage, handlePageChange }) {
               <NavDropdown.Item href="#action/3.6">Sketch</NavDropdown.Item>
             </NavDropdown>
             {AuthService.checkToken() && (
-              <Nav.Link onClick={() => handlePageChange("")}>Sell</Nav.Link>
+              <Nav.Link href="/sell">Sell</Nav.Link>
             )}
-            <Nav.Link onClick={() => handlePageChange("Login")}>Login</Nav.Link>
-            <Nav.Link onClick={() => handlePageChange("Cart")}>
+            <Nav.Link href="/login">Login</Nav.Link>
+            <Nav.Link href="/cart">
               <img src={CartIcon} alt="cart-icon" width="20px" />
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        <Navbar.Brand onClick={() => handlePageChange("Home")}>
+        <Navbar.Brand href="/">
           <img src={Logo} alt="logo" />
         </Navbar.Brand>
       </Container>
