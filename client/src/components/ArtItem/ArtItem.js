@@ -27,7 +27,7 @@ function ArtItem(item) {
   const { cart } = state;
 
   const addToCart = () => {
-    const itemInCart = cart.find((cartItem) => cartItem._id === id);
+    const itemInCart = cart.find((cartItem) => cartItem._id === _id);
     if (itemInCart) {
       dispatch({
         type: UPDATE_CART_QUANTITY,

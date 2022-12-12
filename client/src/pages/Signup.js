@@ -40,22 +40,22 @@ function Signup(props) {
             <Form onSubmit={handleFormSubmit} className="sign-up-form">
                 <Form.Group className="mb-3" controlId="formBasicFirstname">
                     <Form.Label>First Name</Form.Label>
-                    <Form.Control onChange={handleChange} type="firstname" placeholder="First Name" />
+                    <Form.Control onChange={handleChange} type="firstname" placeholder="First Name" name="firstName" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicLastname">
                     <Form.Label>Last Name</Form.Label>
-                    <Form.Control onChange={handleChange} type="lastname" placeholder="Last Name" />
+                    <Form.Control onChange={handleChange} type="lastname" placeholder="Last Name" name="lastName"/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control onChange={handleChange} type="email" placeholder="Enter email" />
+                    <Form.Control onChange={handleChange} type="email" placeholder="Enter email" name="email"/>
                     <Form.Text className="text-muted">
                         We'll never share your email with anyone else.
                     </Form.Text>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control onChange={handleChange} type="password" placeholder="Password" />
+                    <Form.Control onChange={handleChange} type="password" placeholder="Password" name="password"/>
                 </Form.Group>
                 <Button variant="primary" type="submit">
                     Sign Up
