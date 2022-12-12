@@ -36,7 +36,7 @@ function Signup(props) {
 
     return (
         <section>
-            <Link to="/login"></Link>
+
             <Form onSubmit={handleFormSubmit} className="sign-up-form">
                 <Form.Group className="mb-3" controlId="formBasicFirstname">
                     <Form.Label>First Name</Form.Label>
@@ -60,6 +60,10 @@ function Signup(props) {
                 <Button variant="primary" type="submit">
                     Sign Up
                 </Button>
+                {/* <Button variant="primary">
+                    <Link to="/login">Or Login</Link>
+                </Button> */}
+
             </Form>
         </section>
 

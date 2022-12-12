@@ -44,6 +44,8 @@ function App() {
         <div>
           <StoreProvider>
             <NavTabs>
+            </NavTabs>
+              <Routes>
               <Route 
               path="/"
               element={<Home />}
@@ -69,7 +71,8 @@ function App() {
               // TODO: create arts page
               element={<Arts />}
               />
-            </NavTabs>
+              </Routes>
+            
           </StoreProvider>
         </div>
       </Router>
