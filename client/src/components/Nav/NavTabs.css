@@ -1,3 +1,8 @@
 Nav {
     display:inline;
 }
+
+.navbar {
+    /* display: inline; */
+    background: red;
+}

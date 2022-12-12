@@ -37,7 +37,7 @@ function Login(props) {
 
     return (
         <section>
-            <Link to="/signup"></Link>
+            
             <Form onSubmit={handleFormSubmit} className="login-in-form">
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
@@ -55,7 +55,8 @@ function Login(props) {
                     Login
                 </Button>
                 <Form.Text className="text-muted">
-                    or Sign Up
+                <Link to="/signup">or Sign Up</Link>
+                    
                 </Form.Text>
             </Form>
         </section>

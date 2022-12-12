@@ -29,10 +29,10 @@ const userSchema = new Schema({
             ref: 'Art',
         }
     ],
-    cart: {
+    orders: [{
         type: Schema.Types.ObjectId,
-        ref: 'Cart'
-    },
+        ref: 'Order'
+    }],
 })
 
 // todo: hooks
