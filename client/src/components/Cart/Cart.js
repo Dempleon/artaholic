@@ -41,6 +41,7 @@ export default function Cart() {
 
     }, [state.cart.length, dispatch]);
 
+    // function to return cart total fixed to two decimal places
     function getCartTotal() {
         let sum = 0;
         state.cart.forEach((item) => {
@@ -49,7 +50,12 @@ export default function Cart() {
         return sum.toFixed(2);
     }
 
-    function submitCheckout() {
+    function toggleCart() {
+        dispatch({type: TOGGLE_CART});
+    }
+
+    // function to checkout the order
+    function checkoutOrder() {
         const productsIds = [];
 
         state.cart.forEach((item) => {
@@ -75,11 +81,20 @@ export default function Cart() {
 
     return (
         <div>
-            <div>
+            <div onClick={toggleCart}>
                 [close cart]
             </div>
             <h2>Product cart</h2>
             <h1>@@@@@@@@@@@@@@@@@ TODO: keep working on cart--------</h1>
+            {state.cart.length ? (
+                <div>
+
+                </div>
+            ): (
+                <div>
+
+                </div>
+            )}
         </div>
     )
 }
