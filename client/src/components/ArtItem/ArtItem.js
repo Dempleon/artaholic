@@ -1,6 +1,10 @@
 //Rui
 import React, { useRef, useState } from "react";
-
+import { Link } from "react-router-dom";
+import { pluralize } from "../../utils/helpers"
+import { useStoreContext } from '../../utils/GlobalState'
+import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
+import { idbPromise } from "../../utils/helpers";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
