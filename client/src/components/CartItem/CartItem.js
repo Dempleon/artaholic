@@ -3,7 +3,7 @@ import { useStoreContext } from '../../utils/GlobalState';
 import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from '../../utils/actions';
 import { idbPromise } from '../../utils/helpers';
 
-const CartItem = function(art) {
+export default function CartItem (art) {
     const [, dispatch] = useStoreContext();
 
     const removeFromCart = function(art) {
@@ -31,4 +31,38 @@ const CartItem = function(art) {
             idbPromise('card', 'put', {...art, purhcaseQuantity: parseInt(value)});
         }
     }
+
+    return (
+        <div>
+
+            <div>
+                {/*todo: add the image source, it will come from the database*/}
+                {/* <img
+                    src={}
+                    alt=""
+                /> */}
+            </div>
+
+            <div>
+                <div>
+                    {art.name}, ${art.price}
+                </div>
+                <div>
+                    <span>Quantity:</span>
+                    <input
+                        type="number"
+                        placeholder='1'
+                        value={art.purhcaseQuantity}
+                        onChange={onChange}
+                    />
+                    <span
+                        onClick={() => removeFromCart(art)}
+                    >
+                        remove art from cart
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    );
 }
