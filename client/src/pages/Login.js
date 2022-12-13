@@ -25,6 +25,7 @@ function Login(props) {
         } catch (e) {
             console.log(e);
         }
+        window.location.href = "/";
     };
 
     const handleChange = (event) => {

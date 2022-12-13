@@ -14,7 +14,7 @@ import { QUERY_ARTS } from '../utils/queries';
 import { idbPromise } from '../utils/helpers';
 import Button from 'react-bootstrap/Button';
 
-function Detail() {
+function Gallery() {
     const [state, dispatch] = useStoreContext();
     const { id } = useParams();
 
@@ -106,4 +106,4 @@ function Detail() {
     );
 }
 
-export default Detail;
+export default Gallery;
