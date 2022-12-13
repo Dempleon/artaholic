@@ -15,6 +15,7 @@ import Sell from "./pages/Sell";
 import Signup from './pages/Signup';
 import Gallery from './pages/Gallery';
 import Arts from './pages/Arts';
+import Cart from './components/Cart/Cart'
 import { StoreProvider } from "./utils/GlobalState";
 import { setContext } from "@apollo/client/link/context";
 
@@ -65,6 +66,10 @@ function App() {
                <Route 
               path="/sell"
               element={<Sell />}
+              />
+              <Route
+              path="/cart"
+              element={<Cart />}
               />
                {/* <Route 
               path="/arts/:id"

@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/client';
-import CartItem from '../CartItem';
+import CartItem from '../CartItem/CartItem';
 import Auth from '../../utils/auth';
 import { useStoreContext } from '../../utils/GlobalState';
-import './style.css';
+import './Cart.css';
 
 // todo: change the imported queries/mutations later
 // todo: refactor as needed
 import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
 import { QUERY_CHECKOUT } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
-import { startSession } from '../../../../server/models/User';
+// import { startSession } from '../../../../server/models/User';
 
 // todo: may need to change api key into loadstrip
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
@@ -32,13 +32,12 @@ export default function Cart() {
     useEffect(() => {
         async function getCart() {
             const cart = await idbPromise('cart', 'get');
-            dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
+            dispatch({ type: ADD_MULTIPLE_TO_CART, arts: [...cart] });
         }
 
         if (!state.cart.length) {
             getCart();
         }
-
     }, [state.cart.length, dispatch]);
 
     // function to return cart total fixed to two decimal places
@@ -56,16 +55,16 @@ export default function Cart() {
 
     // function to checkout the order
     function checkoutOrder() {
-        const productsIds = [];
+        const artsIds = [];
 
         state.cart.forEach((item) => {
             for (let i = 0; i < item.purchasedQuantity; i++) {
-                productsIds.push(item._id);
+                artsIds.push(item._id);
             }
         });
 
         getCheckout({
-            variables: { products: productsIds },
+            variables: { arts: artsIds },
         })
     }
 
@@ -84,7 +83,7 @@ export default function Cart() {
             <div onClick={toggleCart}>
                 [close cart]
             </div>
-            <h2>Product cart</h2>
+            <h2>Cart</h2>
             <h1>@@@@@@@@@@@@@@@@@ TODO: keep working on cart--------</h1>
             {state.cart.length ? (
                 <div>
