@@ -101,7 +101,8 @@ function Sell() {
 
                             <Form.Group className="mb-3" controlId="formBasicArtImage">
 
-                            <CloudinaryUploadWidget />
+                                <CloudinaryUploadWidget />
+                                <img id="uploadedimage" src=""></img>
 
                             </Form.Group>
 
