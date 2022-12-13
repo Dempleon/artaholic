@@ -8,12 +8,11 @@ class CloudinaryUploadWidget extends Component {
     componentDidMount() {
         const cloudName = "hzxyensd5"; // replace with your own cloud name
         const uploadPreset = "aoh4fpwm"; // replace with your own upload preset
-
-
         var myWidget = window.cloudinary.createUploadWidget(
             {
                 cloudName: cloudName,
-                uploadPreset: uploadPreset
+                uploadPreset: uploadPreset,
+                sources: ["local", "url"]
 
             },
             (error, result) => {
@@ -34,7 +33,6 @@ class CloudinaryUploadWidget extends Component {
             false
         );
     }
-
     render() {
         return (
             <button id="upload_widget" className="cloudinary-button">
@@ -47,11 +45,8 @@ class CloudinaryUploadWidget extends Component {
 
 function Sell() {
     const [show, setShow] = useState(false);
-
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
-
 
     return (
         <div className="d-flex">
@@ -101,7 +96,7 @@ function Sell() {
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicCategory">
-                                <GalleryCategory inNavbar={false}/>
+                                <GalleryCategory inNavbar={false} />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicArtImage">
