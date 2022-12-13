@@ -14,7 +14,7 @@ function NavTabs({ currentPage, handlePageChange }) {
   const tutorial_enabled = localStorage.getItem("tutorial_enabled");
 
   const [state, setState] = useState({
-    stepsEnabled: !!AuthService.getToken(),
+    stepsEnabled: !!AuthService.checkToken(),
     initialStep: 0,
     steps: [
       {
@@ -57,7 +57,11 @@ function NavTabs({ currentPage, handlePageChange }) {
               {AuthService.checkToken() && (
                 <Nav.Link href="/sell">Sell</Nav.Link>
               )}
-              <Nav.Link href="/login">Login</Nav.Link>
+              {!AuthService.checkToken() && <Nav.Link href="/login">Login</Nav.Link>
+              }
+              {AuthService.checkToken() && (
+                <Nav.Link href="/" onClick={() => AuthService.logout()}>Logout</Nav.Link>
+              )}
               <Nav.Link href="/cart">
                 <img src={CartIcon} alt="cart-icon" width="20px" />
               </Nav.Link>
