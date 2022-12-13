@@ -1,22 +1,29 @@
 //Rui
 import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { pluralize } from "../../utils/helpers"
+// import { pluralize } from "../../utils/helpers"
 import { useStoreContext } from '../../utils/GlobalState'
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+// import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
+// import "swiper/css";
+// import "swiper/css/pagination";
+// import "swiper/css/navigation";
 
-import "./styles.css";
+// import "./styles.css";
 
 // import required modules
-import { Pagination, Navigation } from "swiper";
+// import { Pagination, Navigation } from "swiper";
+
+const styles = {
+  art: {
+    maxWidth: '75vw',
+    
+  }
+}
 
 function ArtItem(item) {
   const [state, dispatch] = useStoreContext();
@@ -52,35 +59,19 @@ function ArtItem(item) {
     // https://codesandbox.io/s/znqout?file=/src/App.jsx:403-983
     <div className="card gallery">
       <Link to={`/arts/${_id}`}>
-        {/* <img alt={artname} src={`/images/${image}`} /> */}
-        <Swiper
-          pagination={{
-            type: "progressbar",
-          }}
-          navigation={true}
-          modules={[Pagination, Navigation]}
-          className="mySwiper"
-        >
-          <SwiperSlide>{name}</SwiperSlide>
-          {/* <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-          <SwiperSlide>Slide 4</SwiperSlide>
-          <SwiperSlide>Slide 5</SwiperSlide>
-          <SwiperSlide>Slide 6</SwiperSlide>
-          <SwiperSlide>Slide 7</SwiperSlide>
-          <SwiperSlide>Slide 8</SwiperSlide>
-          <SwiperSlide>Slide 9</SwiperSlide> */}
-        </Swiper>
+        <img style={styles.art} alt={name} src={`${image}`} />
+ 
+
         <p>{name}</p>
       </Link>
       <div>
         {/* TODO: determine if we need quantity for arts */}
-        <div>
+        {/* <div>
           {quantity} {pluralize("item", quantity)} in stock
-        </div>
+        </div> */}
         <span>${price}</span>
       </div>
-      <button onClick={addToCart}>Add to cart</button>
+      <button onClick={addToCart}>Add Art piece to cart</button>
     </div>
   );
 }

@@ -13,6 +13,8 @@ import {
 import { QUERY_ARTS } from '../utils/queries';
 import { idbPromise } from '../utils/helpers';
 import Button from 'react-bootstrap/Button';
+import '../components/ArtItem/ArtItem';
+import '../components/ArtList/ArtList';
 
 function Gallery() {
     const [state, dispatch] = useStoreContext();
@@ -83,6 +85,7 @@ function Gallery() {
 
     return (
         <>
+        <h1>Gallery page</h1>
             {currentArt && cart ? (
                 <div className="container my-1">
                     <h2>{currentArt.name}</h2>
