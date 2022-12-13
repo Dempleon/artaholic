@@ -1,0 +1,18 @@
+[
+    {
+        "name": "Art1",
+        "image":"https://karabullockart.com/wp-content/uploads/2020/05/opbcNewPromoSQ.png",
+        "description": "This a art1",
+        "onsale" : true,
+        "price":200,
+        "category": "oil painting"
+    },
+    {
+        "name": "Art2",
+        "image":"https://afremov.com/images/product/image_1502.jpeg",
+        "description": "This is Art2",
+        "onsale" : true,
+        "price":1000,
+        "category": "sketch"
+    }
+]

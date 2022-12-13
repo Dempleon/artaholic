@@ -2,7 +2,7 @@ const { AuthenticationError } = require("apollo-server-express");
 const { User, Art, Order, Category } = require("../models"); 
 // TODO: create category and order model replace Cart model
 const { signToken } = require("../utils/auth");
-const stripe = require("stripe")(process.env.STRIPE);
+const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 
 const resolvers = {
   Query: {
