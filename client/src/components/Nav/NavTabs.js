@@ -7,10 +7,37 @@ import AuthService from "../../utils/auth";
 import Logo from "../assets/images/artaholic-r-2.png";
 import CartIcon from "../assets/images/cart-icon.png";
 import './NavTabs.css';
-
-
+import 'intro.js/introjs.css';
+import { Steps } from 'intro.js-react';
 
 function NavTabs({ currentPage, handlePageChange }) {
+
+  const [state, setState] = useState({
+    stepsEnabled: true,
+    initialStep: 0,
+    steps: [
+      {
+        element: '.selector1',
+        intro: 'test 1',
+        position: 'right',
+        tooltipClass: 'myTooltipClass',
+        highlightClass: 'myHighlightClass',
+      },
+      {
+        element: '.selector2',
+        intro: 'test 2',
+      },
+      {
+        element: '.selector3',
+        intro: 'test 3',
+      },
+    ]
+  });
+  
+  const onExit = () => {
+    setState(() => ({ stepsEnabled: false }));
+  };
+
   return (
     <div>
     <Navbar bg="white" expand="lg" className="navbar">
@@ -52,6 +79,12 @@ function NavTabs({ currentPage, handlePageChange }) {
         </div>
       </Container>
     </Navbar>
+    {state.stepsEnabled && <Steps
+      enabled={state.stepsEnabled}
+      steps={state.steps}
+      initialStep={state.initialStep}
+      onExit={onExit}
+    />}
     </div>
   );
 }
