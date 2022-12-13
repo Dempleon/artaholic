@@ -46,38 +46,46 @@ function App() {
           <StoreProvider>
             <NavTabs>
             </NavTabs>
-              <Routes>
-              <Route 
-              path="/"
-              element={<Home />}
-              />
-               <Route 
-              path="/login"
-              element={<Login />}
-              />
-               <Route 
-              path="/signup"
-              element={<Signup />}
-              />
-               <Route 
-              path="/gallery"
-              element={<Gallery />}
-              />
-               <Route 
-              path="/sell"
-              element={<Sell />}
+            <Routes>
+              <Route
+                path="/"
+                element={<Home />}
               />
               <Route
-              path="/cart"
-              element={<Cart />}
+                path="/login"
+                element={<Login />}
               />
-               {/* <Route 
+              <Route
+                path="/signup"
+                element={<Signup />}
+              />
+              <Route
+                path="/gallery"
+                element={<Gallery />}
+              />
+              <Route
+                path="/sell"
+                element={<Sell />}
+              />
+              <Route
+                path="/cart"
+                element={<Cart />}
+              />
+              <Route
+                path="/arts"
+                element={<Arts />}
+              />
+              <Route
+                path="/arts/:id"
+                element={<Arts />}
+              />
+              {/* <Route 
               path="/arts/:id"
               // TODO: create arts page
               element={<Arts />}
               /> */}
-              </Routes>
-            
+            </Routes>
+
           </StoreProvider>
         </div>
       </Router>

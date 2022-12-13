@@ -43,10 +43,33 @@ function ArtList() {
             (art) => art.category._id === currentCategory
         );
     }
+
+    return (
+        <div>
+            <h3>The art</h3>
+            {state.arts.length ? (
+                <div>
+                    {filterArts().map((art) => (
+                        <ArtItem 
+                            key={art._id}
+                            _id={art._id}
+                            image={art.image}
+                            name={art.name}
+                            price={art.price}
+                            quantity={art.quantity}
+                        />
+                    ))}
+                </div>
+            ) : (
+                <div>
+                    <h3>There is no art</h3>
+                </div>
+            )}
+            
+        </div>
+    )
 }
 
-// return (
-//     // TODO: COMPLETE THE HTML
-// )
+
 
 export default ArtList;
