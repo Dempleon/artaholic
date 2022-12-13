@@ -63,6 +63,14 @@ const typeDefs = gql`
             password: String!
         ): Auth
         addOrder(arts: [ID]!): Order
+        addArt(
+            name: String
+            description: String
+            image: String
+            quantity: Int
+            price: Float
+            category: ID
+        ): Art
         updateUser(
             firstName: String,
             lastName: String,
