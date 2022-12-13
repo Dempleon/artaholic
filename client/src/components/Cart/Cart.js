@@ -70,9 +70,9 @@ export default function Cart() {
 
     if (!state.cartOpen) {
         return (
-            <div>
+            <div className="cart-closed" onClick={toggleCart}>
                 <span>
-                    The cart is not open, keep working on this
+                    [open cart]
                 </span>
             </div>
         )
@@ -84,7 +84,6 @@ export default function Cart() {
                 [close cart]
             </div>
             <h2>Cart</h2>
-            <h1>@@@@@@@@@@@@@@@@@ TODO: keep working on cart--------</h1>
             {state.cart.length ? (
                 <div>
                     {state.cart.map((art) => (
