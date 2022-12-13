@@ -4,6 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import GalleryCategory from "../components/GalleryCategory/GalleryCategory";
 import { ADD_ART } from "../utils/mutations";
+import { useMutation } from "@apollo/client";
 
 class CloudinaryUploadWidget extends Component {
     componentDidMount() {
@@ -46,8 +47,27 @@ class CloudinaryUploadWidget extends Component {
 
 function Sell() {
     const [show, setShow] = useState(false);
+    const [formState, setFormState] = useState({
+        name: '',
+
+        
+    })
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const [addArt] = useMutation(ADD_ART)
+
+    const handleFormSubmit = async(event) => {
+        event.preventDefault();
+        const addArtResponse = await addArt({
+            variables: {
+                name: formState.name
+            }
+        })
+    }
+
+    const handleChange = (event) => {
+        const {}
+    }
 
     return (
         <div className="d-flex">
@@ -83,21 +103,21 @@ function Sell() {
                         <Form>
                             <Form.Group className="mb-3" controlId="formBasicTitle">
                                 <Form.Label>Title</Form.Label>
-                                <Form.Control type="text" />
+                                <Form.Control type="text" name="name"/>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicDescription">
                                 <Form.Label>Description</Form.Label>
-                                <Form.Control type="text" />
+                                <Form.Control type="text" name="description"/>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicPrice">
                                 <Form.Label>Price</Form.Label>
-                                <Form.Control type="text" />
+                                <Form.Control type="text" name="price"/>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicCategory">
-                                <GalleryCategory inNavbar={false} />
+                                <GalleryCategory inNavbar={false} name="category"/>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicArtImage">
