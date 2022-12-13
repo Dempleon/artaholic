@@ -1,13 +1,56 @@
-import React, { useState } from "react";
+import React, { useState, Component } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+
+class CloudinaryUploadWidget extends Component {
+    componentDidMount() {
+        const cloudName = "hzxyensd5"; // replace with your own cloud name
+        const uploadPreset = "aoh4fpwm"; // replace with your own upload preset
+
+
+        var myWidget = window.cloudinary.createUploadWidget(
+            {
+                cloudName: cloudName,
+                uploadPreset: uploadPreset
+
+            },
+            (error, result) => {
+                if (!error && result && result.event === "success") {
+                    console.log("Done! Here is the image info: ", result.info);
+                    document
+                        .getElementById("uploadedimage")
+                        .setAttribute("src", result.info.secure_url);
+                }
+            }
+        );
+        document.getElementById("upload_widget").addEventListener(
+            "click",
+            function (event) {
+                event.preventDefault()
+                myWidget.open();
+            },
+            false
+        );
+    }
+
+    render() {
+        return (
+            <button id="upload_widget" className="cloudinary-button">
+                Upload
+            </button>
+        );
+    }
+}
+
 
 function Sell() {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+
 
     return (
         <div className="d-flex">
@@ -23,13 +66,13 @@ function Sell() {
                     <strong>Price:</strong>
                 </li>
                 <li>
-                    <img src=""/>
+                    <img src="" />
                     <p>Title</p>
                     <strong>Price:</strong>
                 </li>
             </ul>
             <div className="col-6">
-                <img src=""/>
+                <img src="" />
                 <p>Name</p>
                 <Button variant="primary" onClick={handleShow}>
                     Add new item
@@ -43,24 +86,26 @@ function Sell() {
                         <Form>
                             <Form.Group className="mb-3" controlId="formBasicTitle">
                                 <Form.Label>Title</Form.Label>
-                                <Form.Control type="text"/>
+                                <Form.Control type="text" />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicCategory">
                                 <Form.Label>Category</Form.Label>
-                                <Form.Control type="text"/>
+                                <Form.Control type="text" />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicPrice">
                                 <Form.Label>Price</Form.Label>
-                                <Form.Control type="text"/>
+                                <Form.Control type="text" />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicArtImage">
-                                <Form.Label>Upload Image</Form.Label>
-                                <Form.Control type="text" />
+
+                                <CloudinaryUploadWidget />
+                                <img id="uploadedimage" src=""></img>
+
                             </Form.Group>
-    
+
                             <Button variant="primary" type="submit">
                                 Submit
                             </Button>
