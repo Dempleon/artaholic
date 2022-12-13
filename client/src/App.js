@@ -19,11 +19,11 @@ import { StoreProvider } from "./utils/GlobalState";
 import { setContext } from "@apollo/client/link/context";
 
 const httpLink = createHttpLink({
-  uri: "/graphql",
+  uri: "http://localhost:3001/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem("id_token");
+  const token = localStorage.getItem("login_token");
   return {
     headers: {
       ...headers,
@@ -66,11 +66,11 @@ function App() {
               path="/sell"
               element={<Sell />}
               />
-               <Route 
+               {/* <Route 
               path="/arts/:id"
               // TODO: create arts page
               element={<Arts />}
-              />
+              /> */}
               </Routes>
             
           </StoreProvider>

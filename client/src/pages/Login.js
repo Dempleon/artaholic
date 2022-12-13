@@ -6,7 +6,7 @@ import Auth from '../utils/auth';
 import { validateEmail } from '../utils/helpers';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-// import '../styles/Login.css';
+import '../styles/Login.css';
 
 
 
@@ -41,7 +41,7 @@ function Login(props) {
             <Form onSubmit={handleFormSubmit} className="login-in-form">
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control onChange={handleChange} type="email" placeholder="Enter email" />
+                    <Form.Control onChange={handleChange} type="email" placeholder="Enter email" name="email"/>
                     <Form.Text className="text-muted">
                         We'll never share your email with anyone else.
                     </Form.Text>
@@ -49,14 +49,14 @@ function Login(props) {
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control onChange={handleChange} type="password" placeholder="Password" />
+                    <Form.Control onChange={handleChange} type="password" placeholder="Password" name="password"/>
                 </Form.Group>
                 <Button variant="primary" type="submit">
                     Login
                 </Button>
+                <br></br>
                 <Form.Text className="text-muted">
                 <Link to="/signup">or Sign Up</Link>
-                    
                 </Form.Text>
             </Form>
         </section>

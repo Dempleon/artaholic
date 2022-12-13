@@ -8,7 +8,7 @@ export const TOGGLE_CART = "TOGGLE_CART";
 export const UPDATE_ARTS = "UPDATE_ARTS";
 
 //product actions
-export const UPDATE_PRODUCTS = 'UPDATE_PRODUCTS';
+// export const UPDATE_ARTS = 'UPDATE_ARTS';
 
 // category actions
 export const UPDATE_CATEGORIES = "UPDATE_CATEGORIES";

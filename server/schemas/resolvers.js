@@ -111,6 +111,18 @@ const resolvers = {
       }
       throw new AuthenticationError("Please log in!");
     },
+    // create new art by userId
+    addArt: async (parent, args, context) => {
+      if (context.user) {
+        const art = await Art.create(args);
+        await User.findOneAndUpdate(
+          { _id: context.user.id },
+          { $addToSet: { arts: art._id } }
+        )
+        return art;
+      }
+      throw new AuthenticationError("Please log in!");
+    },
     // edit a user by userId
     updateUser: async (parent, args, context) => {
       if (context.user) {
@@ -137,7 +149,7 @@ const resolvers = {
         throw new AuthenticationError("Incorrect username!");
       }
 
-      const correctPw = await user.isCorrectPassword(password);
+      const correctPw = await user.checkPassword(password);
 
       if (!correctPw) {
         throw new AuthenticationError("Incorrect password!");

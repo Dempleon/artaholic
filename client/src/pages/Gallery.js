@@ -2,15 +2,15 @@ import React, { useEffect, userEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
-// import Cart from '../components/Cart';
+// import Cart from '../components/Cart/Cart';
 import { useStoreContext } from '../utils/GlobalState';
 import {
     REMOVE_FROM_CART,
     UPDATE_CART_QUANTITY,
     ADD_TO_CART,
-    UPDATE_PRODUCTS,
+    UPDATE_ARTS,
 } from '../utils/actions';
-import { QUERY_PRODUCTS } from '../utils/queries';
+import { QUERY_ARTS } from '../utils/queries';
 import { idbPromise } from '../utils/helpers';
 import Button from 'react-bootstrap/Button';
 
@@ -18,38 +18,38 @@ function Detail() {
     const [state, dispatch] = useStoreContext();
     const { id } = useParams();
 
-    const [currentProduct, setCurrentProduct] = useState({});
+    const [currentArt, setCurrentArt] = useState({});
 
-    const { loading, data } = useQuery(QUERY_PRODUCTS);
+    const { loading, data } = useQuery(QUERY_ARTS);
 
-    const { products, cart } = state;
+    const { arts, cart } = state;
 
     useEffect(() => {
         // already in global store
-        if (products.length) {
-            setCurrentProduct(products.find((product) => product._id === id));
+        if (arts.length) {
+            setCurrentArt(arts.find((art) => art._id === id));
         }
         // retrieved from server
         else if (data) {
             dispatch({
-                type: UPDATE_PRODUCTS,
-                products: data.products,
+                type: UPDATE_ARTS,
+                arts: data.arts,
             });
 
-            data.products.forEach((product) => {
-                idbPromise('products', 'put', product);
+            data.arts.forEach((art) => {
+                idbPromise('arts', 'put', art);
             });
         }
         // get cache from idb
         else if (!loading) {
-            idbPromise('products', 'get').then((indexedProducts) => {
+            idbPromise('arts', 'get').then((indexedArts) => {
                 dispatch({
-                    type: UPDATE_PRODUCTS,
-                    products: indexedProducts,
+                    type: UPDATE_ARTS,
+                    arts: indexedArts,
                 });
             });
         }
-    }, [products, data, loading, dispatch, id]);
+    }, [arts, data, loading, dispatch, id]);
 
     const addToCart = () => {
         const itemInCart = cart.find((cartItem) => cartItem._id === id);
@@ -66,37 +66,37 @@ function Detail() {
         } else {
             dispatch({
                 type: ADD_TO_CART,
-                product: { ...currentProduct, purchaseQuantity: 1 },
+                art: { ...currentArt, purchaseQuantity: 1 },
             });
-            idbPromise('cart', 'put', { ...currentProduct, purchaseQuantity: 1 });
+            idbPromise('cart', 'put', { ...currentArt, purchaseQuantity: 1 });
         }
     };
 
     const removeFromCart = () => {
         dispatch({
             type: REMOVE_FROM_CART,
-            _id: currentProduct._id,
+            _id: currentArt._id,
         });
 
-        idbPromise('cart', 'delete', { ...currentProduct });
+        idbPromise('cart', 'delete', { ...currentArt });
     };
 
     return (
         <>
-            {currentProduct && cart ? (
+            {currentArt && cart ? (
                 <div className="container my-1">
-                    <h2>{currentProduct.name}</h2>
+                    <h2>{currentArt.name}</h2>
                     <p>
-                        <strong>Price:</strong>${currentProduct.price}{''}
+                        <strong>Price:</strong>${currentArt.price}{''}
                         <Button onClick={addToCart} variant="outline-secondary">Add to Cart</Button>{' '}
-                        <Button disabled={!cart.find((p) => p._id === currentProduct._id)}
+                        <Button disabled={!cart.find((p) => p._id === currentArt._id)}
                             onClick={removeFromCart}
                             variant="outline-secondary">Remove From Cart</Button>{' '}
                     </p>
 
                     <img
-                        src={`/images/${currentProduct.image}`}
-                        alt={currentProduct.name}
+                        src={`/images/${currentArt.image}`}
+                        alt={currentArt.name}
                     />
                 </div>
             ): null}
