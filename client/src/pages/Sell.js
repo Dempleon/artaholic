@@ -2,6 +2,7 @@ import React, { useState, Component } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+import GalleryCategory from "../components/GalleryCategory/GalleryCategory";
 
 class CloudinaryUploadWidget extends Component {
     componentDidMount() {
@@ -89,14 +90,18 @@ function Sell() {
                                 <Form.Control type="text" />
                             </Form.Group>
 
-                            <Form.Group className="mb-3" controlId="formBasicCategory">
-                                <Form.Label>Category</Form.Label>
+                            <Form.Group className="mb-3" controlId="formBasicDescription">
+                                <Form.Label>Description</Form.Label>
                                 <Form.Control type="text" />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicPrice">
                                 <Form.Label>Price</Form.Label>
                                 <Form.Control type="text" />
+                            </Form.Group>
+
+                            <Form.Group className="mb-3" controlId="formBasicCategory">
+                                <GalleryCategory inNavbar={false}/>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicArtImage">
