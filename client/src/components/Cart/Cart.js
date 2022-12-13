@@ -19,12 +19,12 @@ const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 // todo: complete cart, might have to finish CartItem first
 export default function Cart() {
     const [state, dispatch] = useStoreContext();
-    const [getCheckout, {data}] = useLazyQuery(QUERY_CHECKOUT);
+    const [getCheckout, { data }] = useLazyQuery(QUERY_CHECKOUT);
 
     useEffect(() => {
-        if(data) {
+        if (data) {
             stripePromise.then((res) => {
-                res.redirectToCheckout({sessionId: data.checkout.session});
+                res.redirectToCheckout({ sessionId: data.checkout.session });
             });
         }
     }, [data]);
@@ -32,10 +32,10 @@ export default function Cart() {
     useEffect(() => {
         async function getCart() {
             const cart = await idbPromise('cart', 'get');
-            dispatch({type: ADD_MULTIPLE_TO_CART, products: [...cart]});
+            dispatch({ type: ADD_MULTIPLE_TO_CART, products: [...cart] });
         }
 
-        if(!state.cart.length) {
+        if (!state.cart.length) {
             getCart();
         }
 
@@ -51,7 +51,7 @@ export default function Cart() {
     }
 
     function toggleCart() {
-        dispatch({type: TOGGLE_CART});
+        dispatch({ type: TOGGLE_CART });
     }
 
     // function to checkout the order
@@ -65,11 +65,11 @@ export default function Cart() {
         });
 
         getCheckout({
-            variables: {products: productsIds},
+            variables: { products: productsIds },
         })
     }
 
-    if(!state.cartOpen) {
+    if (!state.cartOpen) {
         return (
             <div>
                 <span>
@@ -88,11 +88,23 @@ export default function Cart() {
             <h1>@@@@@@@@@@@@@@@@@ TODO: keep working on cart--------</h1>
             {state.cart.length ? (
                 <div>
-                   
-                </div>
-            ): (
-                <div>
+                    {state.cart.map((art) => (
+                        <CartItem key={art._id} item={art} />
+                    ))}
 
+                    <div>
+                        <strong>Total: ${getCartTotal()}</strong>
+
+                        {Auth.checkToken() ? (
+                            <button onClick={checkoutOrder}>checkout</button>
+                        ) : (
+                            <span>Login to checkout</span>
+                        )}
+                    </div>
+                </div>
+            ) : (
+                <div>
+                    <h3>The cart is empty</h3>
                 </div>
             )}
         </div>
