@@ -11,9 +11,10 @@ import 'intro.js/introjs.css';
 import { Steps } from 'intro.js-react';
 
 function NavTabs({ currentPage, handlePageChange }) {
+  const tutorial_enabled = localStorage.getItem('tutorial_enabled');
 
   const [state, setState] = useState({
-    stepsEnabled: true,
+    stepsEnabled: !!AuthService.getToken(),
     initialStep: 0,
     steps: [
       {
@@ -36,6 +37,7 @@ function NavTabs({ currentPage, handlePageChange }) {
   
   const onExit = () => {
     setState(() => ({ stepsEnabled: false }));
+    localStorage.setItem('tutorial_enabled', false);
   };
 
   return (
@@ -79,7 +81,7 @@ function NavTabs({ currentPage, handlePageChange }) {
         </div>
       </Container>
     </Navbar>
-    {state.stepsEnabled && <Steps
+    {state.stepsEnabled && !tutorial_enabled && <Steps
       enabled={state.stepsEnabled}
       steps={state.steps}
       initialStep={state.initialStep}
