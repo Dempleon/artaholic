@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import Container from "react-bootstrap/Container";
 import AuthService from "../../utils/auth";
 import Logo from "../assets/images/artaholic-r-2.png";
 import CartIcon from "../assets/images/cart-icon.png";
 import "./NavTabs.css";
+import GalleryCategory from "../GalleryCategory/GalleryCategory";
 import "intro.js/introjs.css";
 import { Steps } from "intro.js-react";
 
@@ -53,18 +53,7 @@ function NavTabs({ currentPage, handlePageChange }) {
               title="Gallery"
               id="basic-nav-dropdown"
                > */}
-              <NavDropdown title="Gallery" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Scenic</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Place</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Human</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.4">
-                  Oil Painting
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.5">
-                  Water Colors
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.6">Sketch</NavDropdown.Item>
-              </NavDropdown>
+              <GalleryCategory inNavbar={true}/>
               {AuthService.checkToken() && (
                 <Nav.Link href="/sell">Sell</Nav.Link>
               )}
