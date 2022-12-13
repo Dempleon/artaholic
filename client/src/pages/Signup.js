@@ -24,6 +24,7 @@ function Signup(props) {
         });
         const token = mutationResponse.data.addUser.token;
         Auth.login(token);
+        window.location.href = "/";
     };
 
     const handleChange = (event) => {
@@ -57,7 +58,7 @@ function Signup(props) {
                     <Form.Label>Password</Form.Label>
                     <Form.Control onChange={handleChange} type="password" placeholder="Password" name="password"/>
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" value="Submit">
                     Sign Up
                 </Button>
                 {/* <Button variant="primary">
