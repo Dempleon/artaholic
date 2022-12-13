@@ -31,3 +31,30 @@ export const ADD_USER = gql`
         }
     }
 `;
+
+export const ADD_ART = gql`
+    mutation addArt(
+            $name: String!
+            $image: String!
+            $price: Float!
+            $description: String
+            $category: ID
+            $quantity: Int
+    ) {
+        addArt(
+                name: $name
+                image: $image
+                price: $price
+                description: $description
+                category: $category
+                quantity: $quantity
+        ) {
+                art {
+                    _id
+                    name
+                    image
+                }
+            }
+    }
+    
+`;
