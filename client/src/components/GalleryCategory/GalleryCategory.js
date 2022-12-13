@@ -65,3 +65,5 @@ function GalleryCategory(props) {
         
     )
 }
+
+export default GalleryCategory;
