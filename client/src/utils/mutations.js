@@ -34,29 +34,27 @@ export const ADD_USER = gql`
 
 export const ADD_ART = gql`
     mutation addArt(
-        addArt(
             $name: String!
             $image: String!
             $price: Float!
             $description: String
-            $category: {_id}
+            $category: ID
             $quantity: Int
-
-        ) {
-            addArt(
+    ) {
+        addArt(
                 name: $name
                 image: $image
                 price: $price
                 description: $description
                 category: $category
                 quantity: $quantity
-            ) {
+        ) {
                 art {
                     _id
                     name
                     image
                 }
             }
-        }
-    )
+    }
+    
 `;
