@@ -19,33 +19,33 @@ function NavTabs({ currentPage, handlePageChange }) {
     steps: [
       {
         element: ".home-link",
-        intro: "test 1",
+        intro: "Welcome to Artaholic! On this website, read all about us on the '<b>Home</b>' page",
         position: "right",
         tooltipClass: "myTooltipClass",
         highlightClass: "myHighlightClass",
       },
       {
         element: ".gallery-link",
-        intro: "test 2",
+        intro: "Click on '<b>Gallery</b>' to view all of the lovely art pieces that we have for sale",
       },
       {
         element: ".sell-link",
-        intro: "test 3",
+        intro: "To sell your own art, click on '<b>Sell</b>' to access the 'Add new item' form",
       },
       {
         element: ".cart-link",
-        intro: "test 3",
+        intro: "To view your cart and/or checkout with your purchases, click on the cart icon",
       },
       {
         element: ".logout-link",
-        intro: "test 3",
-      },
+        intro: "If you are done visiting us, feel free to logout",
+      }
     ],
   });
 
   const onExit = () => {
     setState(() => ({ stepsEnabled: false }));
-    localStorage.setItem("tutorial_enabled", false);
+    // localStorage.setItem("tutorial_enabled", false);
   };
 
   return (
@@ -61,7 +61,8 @@ function NavTabs({ currentPage, handlePageChange }) {
               title="Gallery"
               id="basic-nav-dropdown"
                > */}
-              <div className="gallery-link"><GalleryCategory inNavbar={true}/></div>
+              {/* <div className="gallery-link"><GalleryCategory inNavbar={true}/></div> */}
+              <Nav.Link className="gallery-link" href="/arts">Gallery</Nav.Link>
               {AuthService.checkToken() && (
                 <Nav.Link className="sell-link" href="/sell">Sell</Nav.Link>
               )}
