@@ -26,6 +26,8 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^1.16.1",
+    "@stripe/stripe-js": "^1.46.0",
     "react-bootstrap": "^2.7.0",
     "stripe": "^11.3.0"
   }

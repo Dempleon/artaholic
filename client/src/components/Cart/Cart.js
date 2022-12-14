@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/client';
 import CartItem from '../CartItem/CartItem';
 import Auth from '../../utils/auth';
@@ -14,7 +13,40 @@ import { idbPromise } from '../../utils/helpers';
 // import { startSession } from '../../../../server/models/User';
 
 // todo: may need to change api key into loadstrip
+import { Elements } from '@stripe/react-stripe-js'
+import { loadStripe } from '@stripe/stripe-js';
+import StripeCheckout from "react-stripe-checkout";
+import Row from "react-bootstrap/Row";
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+
+
+class TakeMoney extends React.Component {
+    onToken = (token) => {
+        fetch('/save-stripe-token', {
+            method: 'POST',
+            body: JSON.stringify(token),
+        }).then(response => {
+            response.json().then(data => {
+                alert(`We are in business`);
+            });
+        });
+    }
+
+    render() {
+        return (
+            
+            <StripeCheckout
+                name="Artaholics"
+                token={this.onToken}
+                stripeKey="my_PUBLISHABLE_stripekey"
+                shippingAddress
+                billingAddress={false}
+                currency="USD"
+                bitcoin
+            />
+        )
+    }
+}
 
 // todo: complete cart, might have to finish CartItem first
 export default function Cart() {
@@ -57,9 +89,10 @@ export default function Cart() {
     function checkoutOrder() {
         const artsIds = [];
 
-        state.cart.forEach((item) => {
-            for (let i = 0; i < item.purchasedQuantity; i++) {
-                artsIds.push(item._id);
+        console.log(state.cart);
+        state.cart.forEach((art) => {
+            for (let i = 0; i < art.purchasedQuantity; i++) {
+                artsIds.push(art._id);
             }
         });
 
@@ -78,6 +111,10 @@ export default function Cart() {
         )
     }
 
+    const options = {
+        clientSecret: '{{CLIENT_SECRET}}'
+    }
+
     return (
         <div>
             <div onClick={toggleCart}>
@@ -93,8 +130,9 @@ export default function Cart() {
                     <div>
                         <strong>Total: ${getCartTotal()}</strong>
 
+                        {/* Check to see if the user is logged in. If so render a button to check out */}
                         {Auth.checkToken() ? (
-                            <button onClick={checkoutOrder}>checkout</button>
+                            <TakeMoney/>
                         ) : (
                             <span>Login to checkout</span>
                         )}
@@ -105,6 +143,8 @@ export default function Cart() {
                     <h3>The cart is empty</h3>
                 </div>
             )}
+
+                
         </div>
     )
 }
