@@ -18,20 +18,31 @@ function NavTabs({ currentPage, handlePageChange }) {
     initialStep: 0,
     steps: [
       {
-        element: ".selector1",
-        intro: "test 1",
-        position: "right",
-        tooltipClass: "myTooltipClass",
-        highlightClass: "myHighlightClass",
+        element: ".home-link",
+        intro: "Welcome to Artaholic! On this website, read all about us on the '<b>Home</b>' page",
+        position: "right"
       },
       {
-        element: ".selector2",
-        intro: "test 2",
+        element: ".gallery-link",
+        intro: "Click on '<b>Gallery</b>' to view all of the lovely art pieces that we have for sale",
       },
       {
-        element: ".selector3",
-        intro: "test 3",
+        element: ".sell-link",
+        intro: "To sell your own art, click on '<b>Sell</b>' to access the '<b>Add new item</b>' form",
       },
+      {
+        element: ".cart-link",
+        intro: "To view your cart and/or checkout with your purchases, click on the <b>cart icon</b>",
+      },
+      {
+        element: ".logout-link",
+        intro: 'If you are done visiting us, feel free to <b>logout</b>',
+      },
+      {
+        element: ".home-link", 
+        intro: '<iframe src="https://giphy.com/embed/1qhzTMk8mQzY0Bg7wg"</iframe>',
+        title: "Congrats! You are done! Now go explore the site!"
+      }
     ],
   });
 
@@ -47,24 +58,25 @@ function NavTabs({ currentPage, handlePageChange }) {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link className="home-link" href="/">Home</Nav.Link>
               {/* <NavDropdown
               onClick={() => handlePageChange("Gallery")}
               title="Gallery"
               id="basic-nav-dropdown"
                > */}
-              <GalleryCategory inNavbar={true}/>
+              {/* <div className="gallery-link"><GalleryCategory inNavbar={true}/></div> */}
+              <Nav.Link className="gallery-link" href="/arts">Gallery</Nav.Link>
               {AuthService.checkToken() && (
-                <Nav.Link href="/sell">Sell</Nav.Link>
+                <Nav.Link className="sell-link" href="/sell">Sell</Nav.Link>
               )}
               {!AuthService.checkToken() && <Nav.Link href="/login">Login</Nav.Link>
               }
               {AuthService.checkToken() && (
-                <Nav.Link href="/" onClick={() => AuthService.logout()}>Logout</Nav.Link>
+                <Nav.Link className="logout-link" href="/" onClick={() => AuthService.logout()}>Logout</Nav.Link>
               )}
-              <Nav.Link href="/cart">
+              {AuthService.checkToken() && <Nav.Link className="cart-link" href="/cart">
                 <img src={CartIcon} alt="cart-icon" width="20px" />
-              </Nav.Link>
+              </Nav.Link>}
             </Nav>
           </Navbar.Collapse>
           <div className="logo-image">
