@@ -18,18 +18,26 @@ function NavTabs({ currentPage, handlePageChange }) {
     initialStep: 0,
     steps: [
       {
-        element: ".selector1",
+        element: ".home-link",
         intro: "test 1",
         position: "right",
         tooltipClass: "myTooltipClass",
         highlightClass: "myHighlightClass",
       },
       {
-        element: ".selector2",
+        element: ".gallery-link",
         intro: "test 2",
       },
       {
-        element: ".selector3",
+        element: ".sell-link",
+        intro: "test 3",
+      },
+      {
+        element: ".cart-link",
+        intro: "test 3",
+      },
+      {
+        element: ".logout-link",
         intro: "test 3",
       },
     ],
@@ -47,24 +55,24 @@ function NavTabs({ currentPage, handlePageChange }) {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link className="home-link" href="/">Home</Nav.Link>
               {/* <NavDropdown
               onClick={() => handlePageChange("Gallery")}
               title="Gallery"
               id="basic-nav-dropdown"
                > */}
-              <GalleryCategory inNavbar={true}/>
+              <div className="gallery-link"><GalleryCategory inNavbar={true}/></div>
               {AuthService.checkToken() && (
-                <Nav.Link href="/sell">Sell</Nav.Link>
+                <Nav.Link className="sell-link" href="/sell">Sell</Nav.Link>
               )}
               {!AuthService.checkToken() && <Nav.Link href="/login">Login</Nav.Link>
               }
               {AuthService.checkToken() && (
-                <Nav.Link href="/" onClick={() => AuthService.logout()}>Logout</Nav.Link>
+                <Nav.Link className="logout-link" href="/" onClick={() => AuthService.logout()}>Logout</Nav.Link>
               )}
-              <Nav.Link href="/cart">
+              {AuthService.checkToken() && <Nav.Link className="cart-link" href="/cart">
                 <img src={CartIcon} alt="cart-icon" width="20px" />
-              </Nav.Link>
+              </Nav.Link>}
             </Nav>
           </Navbar.Collapse>
           <div className="logo-image">
