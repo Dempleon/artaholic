@@ -1,6 +1,9 @@
 {
   "name": "artaholic-client",
   "version": "0.1.0",
+  "engines": {
+    "node": "16.x"
+  },
   "private": true,
   "proxy": "http://localhost:3001",
   "dependencies": {
@@ -47,8 +50,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "engines": {
-    "node": "16.x"
   }
 }

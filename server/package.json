@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "start": "node server.js",
     "watch": "nodemon"
@@ -21,8 +24,5 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.3"
-  },
-  "engines": {
-    "node": "16.x"
   }
 }

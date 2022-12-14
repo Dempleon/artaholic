@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "project 3 group 10",
   "main": "index.js",
+  "engines": {
+    "node": "16.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js",
@@ -30,9 +33,6 @@
     "@stripe/stripe-js": "^1.46.0",
     "react-bootstrap": "^2.7.0",
     "stripe": "^11.3.0"
-  },
-  "engines": {
-    "node": "16.x"
   }
 
 }
