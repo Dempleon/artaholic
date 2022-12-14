@@ -9,8 +9,9 @@ import { QUERY_CATEGORIES } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from 'react-bootstrap/DropdownButton';
 
-function GalleryCategory() {
+function GalleryCategory(props) {
   const [state, dispatch] = useStoreContext();
 
   const { categories } = state;
@@ -36,27 +37,20 @@ function GalleryCategory() {
     }
   }, [categoryData, loading, dispatch]);
 
-  // const handleClick = (id, navbar) => {
-  //     if (navbar) {
-  //         document.location.replace(`/category/${id}`);
-  //     } else {
-  //         dispatch({
-  //             type: UPDATE_CURRENT_CATEGORY,
-  //             currentCategory: id
-  //         });
-  //     }
-  // };
-
-  // const inNavbar = props.inNavbar;
-
-  const handleClick = (id) => {
-    dispatch({
-      type: UPDATE_CURRENT_CATEGORY,
-      currentCategory: id,
-    });
+  const handleClick = (id, navbar) => {
+      if (navbar) {
+          document.location.replace(`/category/${id}`);
+      } else {
+          dispatch({
+              type: UPDATE_CURRENT_CATEGORY,
+              currentCategory: id
+          });
+      }
   };
 
-  return (
+  const inNavbar = props.inNavbar;
+
+  return (inNavbar ? 
     <NavDropdown title="Gallery" id="basic-nav-dropdown">
       <Dropdown.Item href="/arts">View All Amazing Arts!</Dropdown.Item>
       {categories.map((item) => (
@@ -69,7 +63,14 @@ function GalleryCategory() {
           {item.name}
         </NavDropdown.Item>
       ))}
-    </NavDropdown>
+        </NavDropdown>
+      :
+      <DropdownButton id="dropdown-basic-button" title="Choose a Category">
+            {categories.map((item) => (
+                <Dropdown.Item key={item._id} onClick={() => {handleClick(item._id, inNavbar)}}>{item.name}</Dropdown.Item>
+            ))}
+        </DropdownButton>
+  
   );
 }
 
