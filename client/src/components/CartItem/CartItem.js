@@ -3,8 +3,16 @@ import { useStoreContext } from '../../utils/GlobalState';
 import { REMOVE_FROM_CART, UPDATE_CART_QUANTITY } from '../../utils/actions';
 import { idbPromise } from '../../utils/helpers';
 
+const styles = {
+    artInCart: {
+        maxWidth: '30vw'
+    }
+}
+
 export default function CartItem (art) {
+    console.log(art)
     const [, dispatch] = useStoreContext();
+    const {image, name, _id, price} = art
 
     const removeFromCart = function(art) {
         dispatch({
@@ -37,15 +45,15 @@ export default function CartItem (art) {
 
             <div>
                 {/*todo: add the image source, it will come from the database*/}
-                {/* <img
-                    src={}
-                    alt=""
-                /> */}
+                <img
+                    src={`${image}`}
+                    style={styles.artInCart}
+                />
             </div>
 
             <div>
                 <div>
-                    {art.name}, ${art.price}
+                    {`${name}`}, ${`${price}`}
                 </div>
                 <div>
                     <span>Quantity:</span>

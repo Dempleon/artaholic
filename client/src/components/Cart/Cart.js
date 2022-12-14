@@ -124,7 +124,8 @@ export default function Cart() {
             {state.cart.length ? (
                 <div>
                     {state.cart.map((art) => (
-                        <CartItem key={art._id} item={art} />
+                        
+                        <CartItem key={art._id} item={art} image={art.image} />
                     ))}
 
                     <div>
