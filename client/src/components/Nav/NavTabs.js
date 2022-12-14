@@ -20,9 +20,7 @@ function NavTabs({ currentPage, handlePageChange }) {
       {
         element: ".home-link",
         intro: "Welcome to Artaholic! On this website, read all about us on the '<b>Home</b>' page",
-        position: "right",
-        tooltipClass: "myTooltipClass",
-        highlightClass: "myHighlightClass",
+        position: "right"
       },
       {
         element: ".gallery-link",
@@ -30,22 +28,27 @@ function NavTabs({ currentPage, handlePageChange }) {
       },
       {
         element: ".sell-link",
-        intro: "To sell your own art, click on '<b>Sell</b>' to access the 'Add new item' form",
+        intro: "To sell your own art, click on '<b>Sell</b>' to access the '<b>Add new item</b>' form",
       },
       {
         element: ".cart-link",
-        intro: "To view your cart and/or checkout with your purchases, click on the cart icon",
+        intro: "To view your cart and/or checkout with your purchases, click on the <b>cart icon</b>",
       },
       {
         element: ".logout-link",
-        intro: "If you are done visiting us, feel free to logout",
+        intro: 'If you are done visiting us, feel free to <b>logout</b>',
+      },
+      {
+        element: ".home-link", 
+        intro: '<iframe src="https://giphy.com/embed/1qhzTMk8mQzY0Bg7wg"</iframe>',
+        title: "Congrats! You are done! Now go explore the site!"
       }
     ],
   });
 
   const onExit = () => {
     setState(() => ({ stepsEnabled: false }));
-    // localStorage.setItem("tutorial_enabled", false);
+    localStorage.setItem("tutorial_enabled", false);
   };
 
   return (
