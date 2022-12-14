@@ -12,12 +12,12 @@ const styles = {
 export default function CartItem (art) {
     console.log(art)
     const [, dispatch] = useStoreContext();
-    const {image, name, _id, price} = art
+    const {image, name, _id, price, quantity} = art
 
     const removeFromCart = function(art) {
         dispatch({
             type: REMOVE_FROM_CART,
-            _id: art._id
+            _id: _id
         });
         idbPromise('cart', 'delete', {...art});
     };
@@ -44,7 +44,6 @@ export default function CartItem (art) {
         <div>
 
             <div>
-                {/*todo: add the image source, it will come from the database*/}
                 <img
                     src={`${image}`}
                     style={styles.artInCart}
@@ -60,17 +59,12 @@ export default function CartItem (art) {
                     <input
                         type="number"
                         placeholder='1'
-                        value={art.purhcaseQuantity}
+                        value={quantity}
                         onChange={onChange}
                     />
-                    <span
-                        onClick={() => removeFromCart(art)}
-                    >
-                        remove art from cart
-                    </span>
+                    <button onClick={() => removeFromCart(_id)}>Remove from cart</button>
                 </div>
             </div>
-
         </div>
     );
 }
