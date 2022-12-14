@@ -61,7 +61,7 @@ function Sell() {
         const addArtResponse = await addArt({
             variables: {
                 name: formState.name,
-                description
+                description: formState.description,
             }
         })
     }
