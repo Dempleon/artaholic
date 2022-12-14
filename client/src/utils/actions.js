@@ -10,3 +10,4 @@ export const UPDATE_ARTS = "UPDATE_ARTS";
 // category actions
 export const UPDATE_CATEGORIES = "UPDATE_CATEGORIES";
 export const UPDATE_CURRENT_CATEGORY = "UPDATE_CURRENT_CATEGORY";
+export const OPEN_CART = 'OPEN_CART';
