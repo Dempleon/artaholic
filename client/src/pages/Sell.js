@@ -60,7 +60,8 @@ function Sell() {
         event.preventDefault();
         const addArtResponse = await addArt({
             variables: {
-                name: formState.name
+                name: formState.name,
+                description: formState.description,
             }
         })
     }
