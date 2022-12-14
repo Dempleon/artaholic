@@ -1,69 +1,76 @@
-import React, { useEffect } from 'react';
-import { useQuery } from '@apollo/client';
-import { useStoreContext } from '../../utils/GlobalState';
+import React, { useEffect } from "react";
+import { useQuery } from "@apollo/client";
+import { useStoreContext } from "../../utils/GlobalState";
 import {
-    UPDATE_CATEGORIES,
-    UPDATE_CURRENT_CATEGORY,
-} from '../../utils/actions';
-import { QUERY_CATEGORIES } from '../../utils/queries';
-import { idbPromise } from '../../utils/helpers';
+  UPDATE_CATEGORIES,
+  UPDATE_CURRENT_CATEGORY,
+} from "../../utils/actions";
+import { QUERY_CATEGORIES } from "../../utils/queries";
+import { idbPromise } from "../../utils/helpers";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from "react-bootstrap/Dropdown";
 
-function GalleryCategory(props) {
-    const [state, dispatch] = useStoreContext();
+function GalleryCategory() {
+  const [state, dispatch] = useStoreContext();
 
-    const { categories } = state;
+  const { categories } = state;
 
-    const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
+  const { loading, data: categoryData } = useQuery(QUERY_CATEGORIES);
 
-    useEffect(() => {
-        if (categoryData) {
-            dispatch({
-                type: UPDATE_CATEGORIES,
-                categories: categoryData.categories,
-            });
-            categoryData.categories.forEach((category) => {
-                idbPromise('categories', 'put', category);
-            });
-        } else if (!loading) {
-            idbPromise('categories', 'get').then((categories) => {
-                dispatch({
-                    type: UPDATE_CATEGORIES,
-                    categories: categories
-                });
-            });
-        }
-    }, [categoryData, loading, dispatch]);
+  useEffect(() => {
+    if (categoryData) {
+      dispatch({
+        type: UPDATE_CATEGORIES,
+        categories: categoryData.categories,
+      });
+      categoryData.categories.forEach((category) => {
+        idbPromise("categories", "put", category);
+      });
+    } else if (!loading) {
+      idbPromise("categories", "get").then((categories) => {
+        dispatch({
+          type: UPDATE_CATEGORIES,
+          categories: categories,
+        });
+      });
+    }
+  }, [categoryData, loading, dispatch]);
 
-    const handleClick = (id, navbar) => {
-        if (navbar) {
-            document.location.replace(`/category/${id}`);
-        } else {
-            dispatch({
-                type: UPDATE_CURRENT_CATEGORY,
-                currentCategory: id
-            });
-        }
-    };
+  // const handleClick = (id, navbar) => {
+  //     if (navbar) {
+  //         document.location.replace(`/category/${id}`);
+  //     } else {
+  //         dispatch({
+  //             type: UPDATE_CURRENT_CATEGORY,
+  //             currentCategory: id
+  //         });
+  //     }
+  // };
 
-    const inNavbar = props.inNavbar;
+  // const inNavbar = props.inNavbar;
 
-    return ( inNavbar ? 
-        <NavDropdown title="Gallery" id="basic-nav-dropdown">
-            {categories.map((item) => (
-                <NavDropdown.Item key={item._id} onClick={() => {handleClick(item._id, inNavbar)}}>{item.name}</NavDropdown.Item>
-            ))}
-        </NavDropdown>
-        :
-        <DropdownButton id="dropdown-basic-button" title="Choose a Category">
-            {categories.map((item) => (
-                <Dropdown.Item key={item._id} onClick={() => {handleClick(item._id, inNavbar)}}>{item.name}</Dropdown.Item>
-            ))}
-        </DropdownButton>
-        
-    )
+  const handleClick = (id) => {
+    dispatch({
+      type: UPDATE_CURRENT_CATEGORY,
+      currentCategory: id,
+    });
+  };
+
+  return (
+    <NavDropdown title="Gallery" id="basic-nav-dropdown">
+      <Dropdown.Item href="/arts">View All Amazing Arts!</Dropdown.Item>
+      {categories.map((item) => (
+        <NavDropdown.Item
+          key={item._id}
+          onClick={() => {
+            handleClick(item._id);
+          }}
+        >
+          {item.name}
+        </NavDropdown.Item>
+      ))}
+    </NavDropdown>
+  );
 }
 
 export default GalleryCategory;
