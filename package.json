@@ -24,7 +24,7 @@
   "bugs": {
     "url": "https://github.com/Dempleon/artaholic/issues"
   },
-  "homepage": "https://github.com/Dempleon/artaholic#readme",
+  "homepage": "https://artaholics.herokuapp.com/",
   "devDependencies": {
     "concurrently": "^5.1.0"
   },
