@@ -2,10 +2,10 @@
   "name": "artaholic",
   "version": "1.0.0",
   "description": "project 3 group 10",
-  "main": "index.js",
   "engines": {
     "node": "16.x"
   },
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js",
