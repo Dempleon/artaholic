@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 // deploying 12/13/22 10:44pm
 mongoose.connect(
-  process.env.MONGODB_URI || 'mongodb://localhost:27017/artaholics',
+  process.env.MONGODB_URI || 'mongodb+srv://demp:artaholics123@cluster1.qxttopw.mongodb.net/?retryWrites=true&w=majority',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
