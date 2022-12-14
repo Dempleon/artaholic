@@ -6,7 +6,6 @@ import {
   ApolloProvider,
   createHttpLink,
 } from "@apollo/client";
-import logo from "./logo.svg";
 import "./App.css";
 import Home from "./pages/Home";
 import NavTabs from "./components/Nav/NavTabs";
@@ -16,11 +15,12 @@ import Signup from './pages/Signup';
 import Gallery from './pages/Gallery';
 import Arts from './pages/Arts';
 import Cart from './components/Cart/Cart'
+import GalleryCategory from './components/GalleryCategory/GalleryCategory';
 import { StoreProvider } from "./utils/GlobalState";
 import { setContext } from "@apollo/client/link/context";
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:3001/graphql",
+  uri: "/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -79,21 +79,16 @@ function App() {
                 path="/arts/:id"
                 element={<Arts />}
               />
-              {/* <Route 
-              path="/arts/:id"
-              // TODO: create arts page
-              element={<Arts />}
-              /> */}
+              <Route
+                path="/category/:id"
+                element={<GalleryCategory />}
+              />
             </Routes>
 
           </StoreProvider>
         </div>
       </Router>
     </ApolloProvider>
-    // <>
-    //   <NavTabs />
-    //   <Home />,
-    // </>
   );
 }
 
