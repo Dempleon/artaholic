@@ -7,7 +7,7 @@ import './Cart.css';
 
 // todo: change the imported queries/mutations later
 // todo: refactor as needed
-import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
+import { TOGGLE_CART, ADD_MULTIPLE_TO_CART, OPEN_CART } from '../../utils/actions';
 import { QUERY_CHECKOUT } from '../../utils/queries';
 import { idbPromise } from '../../utils/helpers';
 // import { startSession } from '../../../../server/models/User';
@@ -81,9 +81,11 @@ export default function Cart() {
         return sum.toFixed(2);
     }
 
-    function toggleCart() {
-        dispatch({ type: TOGGLE_CART });
-    }
+    // function toggleCart() {
+    //     dispatch({ type: TOGGLE_CART });
+    // }
+
+  
 
     // function to checkout the order
     function checkoutOrder() {
@@ -101,15 +103,17 @@ export default function Cart() {
         })
     }
 
-    if (!state.cartOpen) {
-        return (
-            <div className="cart-closed" onClick={toggleCart}>
-                <span>
-                    [open cart]
-                </span>
-            </div>
-        )
-    }
+    // if (!state.cartOpen) {
+    //     dispatch({type: OPEN_CART})
+    //     return (
+    //         // <div className="cart-closed" onClick={toggleCart}>
+    //         //     <span>
+    //         //         [open cart]
+    //         //     </span>
+    //         // </div>
+    //         <div></div>
+    //     )
+    // }
 
     const options = {
         clientSecret: '{{CLIENT_SECRET}}'
@@ -117,15 +121,12 @@ export default function Cart() {
 
     return (
         <div>
-            <div onClick={toggleCart}>
-                [close cart]
-            </div>
             <h2>Cart</h2>
             {state.cart.length ? (
                 <div>
                     {state.cart.map((art) => (
                         
-                        <CartItem key={art._id} item={art} image={art.image} />
+                        <CartItem key={art._id} name={art.name} price={art.price} image={art.image} quantity={art.quantity}/>
                     ))}
 
                     <div>
