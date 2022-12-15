@@ -60,10 +60,6 @@ function Login(props) {
                         <Link to="/signup">or Sign Up</Link>
                     </Form.Text>
                 </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> 29150fe0189e076cf746d2570dccb2ec71b6e00d
             </Form>
         </section>
     );
