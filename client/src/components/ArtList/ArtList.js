@@ -6,6 +6,8 @@ import { idbPromise } from "../../utils/helpers";
 import ArtItem from "../ArtItem/ArtItem";
 import { UPDATE_ARTS } from "../../utils/actions";
 import { QUERY_ARTS } from "../../utils/queries";
+import CategoryMenu from "../CategoryMenu/CategoryMenu";
+import "./ArtList.css";
 
 function ArtList() {
   const [state, dispatch] = useStoreContext();
@@ -39,28 +41,30 @@ function ArtList() {
     return state.arts.filter((art) => art.category._id === currentCategory);
   }
 
-  return (
-    <div>
+  return (  <div>
+    <div className="">
       <h3>The art</h3>
-      {state.arts.length ? (
-        <div>
-          {filterArts().map((art) => (
-            <ArtItem
-              key={art._id}
-              _id={art._id}
-              image={art.image}
-              name={art.name}
-              price={art.price}
-              quantity={art.quantity}
-            />
-          ))}
-        </div>
-      ) : (
-        <div>
-          <h3>There is no art</h3>
-        </div>
-      )}
+      <CategoryMenu />
     </div>
+    {state.arts.length ? (
+      <div>
+        {filterArts().map((art) => (
+          <ArtItem
+            key={art._id}
+            _id={art._id}
+            image={art.image}
+            name={art.name}
+            price={art.price}
+            quantity={art.quantity}
+          />
+        ))}
+      </div>
+    ) : (
+      <div>
+        <h3>There is no art</h3>
+      </div>
+    )}
+  </div>
   );
 }
 
