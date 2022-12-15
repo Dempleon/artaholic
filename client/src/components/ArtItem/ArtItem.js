@@ -9,9 +9,10 @@ import { alignPropType } from "react-bootstrap/esm/types";
 
 const styles = {
   art: {
+
     height: "25vh",
     width: "auto"
-   
+
   },
   card: {
     backgroundColor: "transparent",
