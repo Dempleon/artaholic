@@ -1,13 +1,17 @@
-import React, { useState, Component } from "react";
+import React, { useState, Component, useEffect } from "react";
+import { useStoreContext } from "../utils/GlobalState";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import GalleryCategory from "../components/GalleryCategory/GalleryCategory";
 import { ADD_ART } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
+import { UPDATE_CURRENT_IMAGE } from '../utils/actions'
 
-class CloudinaryUploadWidget extends Component {
-    componentDidMount() {
+function CloudinaryUploadWidget() {
+    const [state, dispatch] = useStoreContext();
+    const { currentImageURL } = state;
+    useEffect(() => {
         const cloudName = "hzxyensd5"; // replace with your own cloud name
         const uploadPreset = "aoh4fpwm"; // replace with your own upload preset
         var myWidget = window.cloudinary.createUploadWidget(
@@ -34,23 +38,27 @@ class CloudinaryUploadWidget extends Component {
             },
             false
         );
-    }
-    render() {
-        return (
-            <button id="upload_widget" className="cloudinary-button">
-                Upload
-            </button>
-        );
-    }
+    });
+    return (
+        <button id="upload_widget" className="cloudinary-button">
+            Upload
+        </button>
+    );
 }
 
-
 function Sell() {
+    const [state, dispatch] = useStoreContext();
+    const { currentCategory } = state;
+    console.log(`currentCategory: ${currentCategory}`);
+
     const [show, setShow] = useState(false);
     const [formState, setFormState] = useState({
         name: '',
-
-        
+        image: '',
+        description: '',
+        price: '',
+        category: currentCategory,
+        quantity: ''
     })
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -58,17 +66,37 @@ function Sell() {
 
     const handleFormSubmit = async(event) => {
         event.preventDefault();
+        const variables = {
+            name: formState.name,
+            description: formState.description,
+            category: currentCategory,
+            price: parseFloat(formState.price),
+            image: document.getElementById('uploadedimage').src,
+            quantity: parseInt(formState.quantity)
+        }
+        console.log(variables);
         const addArtResponse = await addArt({
             variables: {
                 name: formState.name,
                 description: formState.description,
+                category: currentCategory,
+                price: parseFloat(formState.price),
+                image: document.getElementById('uploadedimage').src, 
+                quantity: parseInt(formState.quantity)
             }
-        })
+        });
+        console.log(addArtResponse);
+        window.location.reload()
     }
 
-    // const handleChange = (event) => {
-    //     const {}
-    // }
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormState({
+            ...formState,
+            [name]: value,
+            category: currentCategory
+        })
+    }
 
     return (
         <div className="d-flex">
@@ -101,30 +129,36 @@ function Sell() {
                         <Modal.Title>Selling Form</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form>
+                        <Form onSubmit={handleFormSubmit}>
                             <Form.Group className="mb-3" controlId="formBasicTitle">
                                 <Form.Label>Title</Form.Label>
-                                <Form.Control type="text" name="name"/>
+                                <Form.Control type="text" name="name" onChange={handleChange}/>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicDescription">
                                 <Form.Label>Description</Form.Label>
-                                <Form.Control type="text" name="description"/>
+                                <Form.Control type="text" name="description" onChange={handleChange}/>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicPrice">
                                 <Form.Label>Price</Form.Label>
-                                <Form.Control type="text" name="price"/>
+                                <Form.Control type="text" name="price" onChange={handleChange}/>
                             </Form.Group>
 
-                            <Form.Group className="mb-3" controlId="formBasicCategory">
-                                <GalleryCategory inNavbar={false} name="category"/>
+                            <Form.Group className="mb-3" controlId="formBasicTitle">
+                                <Form.Label>Quantity</Form.Label>
+                                <Form.Control type="text" name="quantity" onChange={handleChange}/>
+                            </Form.Group>
+
+                            <Form.Group className="mb-3" controlId="formBasicCategory" name="category" onChange={handleChange}>
+                                <GalleryCategory inNavbar={false}/>
+                                {/* <Form.Control placeholder="Category" disabled /> */}
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicArtImage">
 
-                                <CloudinaryUploadWidget />
-                                <img id="uploadedimage" src=""></img>
+                                <CloudinaryUploadWidget/>
+                                <img id="uploadedimage" src=""/>
 
                             </Form.Group>
 
