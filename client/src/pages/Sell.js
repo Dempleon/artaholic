@@ -99,26 +99,13 @@ function Sell() {
 
     return (
         <div className="d-flex">
-            <ul className="col-6">
-                <li>
-                    <img src=""></img>
-                    <p>Title</p>
-                    <strong>Price:</strong>
-                </li>
-                <li>
-                    <img src=""></img>
-                    <p>Title</p>
-                    <strong>Price:</strong>
-                </li>
-                <li>
-                    <img src="" />
-                    <p>Title</p>
-                    <strong>Price:</strong>
-                </li>
-            </ul>
-            <div className="col-6">
-                <img src="" />
-                <p>Name</p>
+            {/* <div className="col-6">
+                <h1>Welcome to the user page!</h1>
+            </div> */}
+            <div>
+                {/* <img src="" />
+                <p></p> */}
+                <h1>Click on this button to add your own art</h1>
                 <Button variant="primary" onClick={handleShow}>
                     Add new item
                 </Button>
