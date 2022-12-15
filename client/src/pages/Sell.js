@@ -8,10 +8,8 @@ import { ADD_ART } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
 import { UPDATE_CURRENT_IMAGE } from '../utils/actions'
 
-function CloudinaryUploadWidget() {
-    const [state, dispatch] = useStoreContext();
-    const { currentImageURL } = state;
-    useEffect(() => {
+class CloudinaryUploadWidget extends Component {
+    componentDidMount() {
         const cloudName = "hzxyensd5"; // replace with your own cloud name
         const uploadPreset = "aoh4fpwm"; // replace with your own upload preset
         var myWidget = window.cloudinary.createUploadWidget(
@@ -38,18 +36,19 @@ function CloudinaryUploadWidget() {
             },
             false
         );
-    });
-    return (
-        <button id="upload_widget" className="cloudinary-button">
-            Upload
-        </button>
-    );
+    }
+    render() {
+        return (
+            <button id="upload_widget" className="cloudinary-button">
+                Upload
+            </button>
+        );
+    }
 }
 
 function Sell() {
     const [state, dispatch] = useStoreContext();
     const { currentCategory } = state;
-    console.log(`currentCategory: ${currentCategory}`);
 
     const [show, setShow] = useState(false);
     const [formState, setFormState] = useState({
@@ -66,15 +65,15 @@ function Sell() {
 
     const handleFormSubmit = async(event) => {
         event.preventDefault();
-        const variables = {
-            name: formState.name,
-            description: formState.description,
-            category: currentCategory,
-            price: parseFloat(formState.price),
-            image: document.getElementById('uploadedimage').src,
-            quantity: parseInt(formState.quantity)
-        }
-        console.log(variables);
+        // const variables = {
+        //     name: formState.name,
+        //     description: formState.description,
+        //     category: currentCategory,
+        //     price: parseFloat(formState.price),
+        //     image: document.getElementById('uploadedimage').src,
+        //     quantity: parseInt(formState.quantity)
+        // }
+        // console.log(variables);
         const addArtResponse = await addArt({
             variables: {
                 name: formState.name,
