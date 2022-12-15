@@ -14,7 +14,7 @@ const styles = {
   card: {
     backgroundColor: "transparent",
     border: "none",
-    // margin: "20px",
+    padding: "20px",
     flexDirection: "row"
   }
 };
