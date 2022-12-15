@@ -13,7 +13,7 @@ import { idbPromise } from '../../utils/helpers';
 // import { startSession } from '../../../../server/models/User';
 
 // todo: may need to change api key into loadstrip
-import { Elements } from '@stripe/react-stripe-js'
+import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import StripeCheckout from "react-stripe-checkout";
 import Row from "react-bootstrap/Row";
@@ -30,11 +30,11 @@ class TakeMoney extends React.Component {
                 alert(`We are in business`);
             });
         });
-    }
+    };
 
     render() {
         return (
-            
+
             <StripeCheckout
                 name="Artaholics"
                 token={this.onToken}
@@ -44,7 +44,7 @@ class TakeMoney extends React.Component {
                 currency="USD"
                 bitcoin
             />
-        )
+        );
     }
 }
 
@@ -85,7 +85,7 @@ export default function Cart() {
     //     dispatch({ type: TOGGLE_CART });
     // }
 
-  
+
 
     // function to checkout the order
     function checkoutOrder() {
@@ -100,7 +100,7 @@ export default function Cart() {
 
         getCheckout({
             variables: { arts: artsIds },
-        })
+        });
     }
 
     // if (!state.cartOpen) {
@@ -117,36 +117,38 @@ export default function Cart() {
 
     const options = {
         clientSecret: '{{CLIENT_SECRET}}'
-    }
+    };
 
     return (
         <div>
             <h2>Cart</h2>
             {state.cart.length ? (
-                <div>
-                    {state.cart.map((art) => (
-                        
-                        <CartItem key={art._id} name={art.name} price={art.price} image={art.image} quantity={art.quantity}/>
-                    ))}
-
-                    <div>
-                        <strong>Total: ${getCartTotal()}</strong>
-
+                <>
+                    <div className='d-flex justify-content-center flex-wrap'>
+                        {state.cart.map((art) => (
+                            <CartItem key={art._id} _id={art._id} name={art.name} price={art.price} image={art.image} quantity={art.purchaseQuantity} />
+                        ))}
+                    </div>
+                    <div className='d-flex justify-content-center flex-wrap'>
+                        <div className='col-6'></div>
+                        <div className='col-6 mb-3'>
+                            <strong >Total: ${getCartTotal()}</strong>
+                        </div>
                         {/* Check to see if the user is logged in. If so render a button to check out */}
                         {Auth.checkToken() ? (
-                            <TakeMoney/>
+                            <TakeMoney />
                         ) : (
                             <span>Login to checkout</span>
                         )}
                     </div>
-                </div>
+                </>
             ) : (
                 <div>
                     <h3>The cart is empty</h3>
                 </div>
             )}
 
-                
+
         </div>
-    )
+    );
 }

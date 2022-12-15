@@ -5,11 +5,18 @@ import { pluralize } from "../../utils/helpers";
 import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
+import Button from "react-bootstrap/button";
 
 const styles = {
   art: {
-    width: "30vh",
+    height: "218px",
   },
+  card: {
+    backgroundColor: "transparent",
+    border: "none",
+    // margin: "20px",
+    flexDirection: "row"
+  }
 };
 
 function ArtItem(item) {
@@ -41,18 +48,24 @@ function ArtItem(item) {
   };
 
   return (
-    <div className="card gallery">
-      <Link to={`/arts/${_id}`}>
+    <div className="card gallery col-4 d-flex" style={styles.card}>
+      <Link to={`/arts/${_id}`} className="col-6">
         <img style={styles.art} alt={name} src={`${image}`} />
-        <p>{name}</p>
       </Link>
-      <div>
+      <div className="col-6 d-flex align-items-center">
         <div>
+          <strong>{name}</strong>
+          {/* <div>
           {quantity} {pluralize("item", quantity)} in stock
+        </div> */}
+          <div>
+            <strong>${price}</strong>
+          </div>
+          <div>
+            <Button variant="outline-secondary" onClick={addToCart}>Add Art piece to cart</Button>
+          </div>
         </div>
-        <span>${price}</span>
       </div>
-      <button onClick={addToCart}>Add Art piece to cart</button>
     </div>
   );
 }

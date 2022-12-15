@@ -1,10 +1,21 @@
+.navbar{
+    justify-content: space-between;
+}
+.navbar >.container{
+    margin:0;
+    max-width: none;
+}
 .logo-image {
-    width: 250px;
     height: 80px;
     overflow: hidden;
 }
-
 .art-logo {
     margin-top: -60px;
  
+}
+.nav-link{
+    margin-right: 20px;
+}
+.nav-link:last-of-type{
+    margin-right: 0;
 }
