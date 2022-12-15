@@ -11,11 +11,11 @@ import Home from "./pages/Home";
 import NavTabs from "./components/Nav/NavTabs";
 import Login from "./pages/Login";
 import Sell from "./pages/Sell";
-import Signup from './pages/Signup';
-import Gallery from './pages/Gallery';
-import Arts from './pages/Arts';
-import Cart from './components/Cart/Cart'
-import GalleryCategory from './components/GalleryCategory/GalleryCategory';
+import Signup from "./pages/Signup";
+import Gallery from "./pages/Gallery";
+import Arts from "./pages/Arts";
+import Cart from "./components/Cart/Cart";
+import GalleryCategory from "./components/GalleryCategory/GalleryCategory";
 import { StoreProvider } from "./utils/GlobalState";
 import { setContext } from "@apollo/client/link/context";
 
@@ -44,43 +44,17 @@ function App() {
       <Router>
         <div>
           <StoreProvider>
-            <NavTabs>
-            </NavTabs>
+            <NavTabs></NavTabs>
             <Routes>
-              <Route
-                path="/"
-                element={<Home />}
-              />
-              <Route
-                path="/login"
-                element={<Login />}
-              />
-              <Route
-                path="/signup"
-                element={<Signup />}
-              />
-              <Route
-                path="/arts/:id"
-                element={<Gallery />}
-              />
-              <Route
-                path="/sell"
-                element={<Sell />}
-              />
-              <Route
-                path="/cart"
-                element={<Cart />}
-              />
-              <Route
-                path="/arts"
-                element={<Arts />}
-              />
-              <Route
-                path="/category/:id"
-                element={<GalleryCategory />}
-              />
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/arts/:id" element={<Gallery />} />
+              <Route path="/sell" element={<Sell />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/arts" element={<Arts />} />
+              <Route path="/category/:id" element={<GalleryCategory />} />
             </Routes>
-
           </StoreProvider>
         </div>
       </Router>

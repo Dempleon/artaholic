@@ -1,12 +1,10 @@
-import React from 'react';
-import ArtList from '../components/ArtList/ArtList';
+import React from "react";
+import ArtList from "../components/ArtList/ArtList";
 
 export default function Arts() {
-
-    return (
-        <div>
-             <ArtList/>
-        </div>
-       
-    )
+  return (
+    <div>
+      <ArtList />
+    </div>
+  );
 }

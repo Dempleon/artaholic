@@ -1,6 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Art, Order, Category } = require("../models"); 
-// TODO: create category and order model replace Cart model
+const { User, Art, Order, Category } = require("../models");
 const { signToken } = require("../utils/auth");
 const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
 
@@ -64,7 +63,6 @@ const resolvers = {
         const art = await stripe.arts.create({
           name: arts[i].name,
           description: arts[i].description,
-          // TODO: save image accordingly as this url
           images: [`${url}/images/${arts[i].image}`],
         });
 
@@ -118,7 +116,7 @@ const resolvers = {
         await User.findOneAndUpdate(
           { _id: context.user.id },
           { $addToSet: { arts: art._id } }
-        )
+        );
         return art;
       }
       throw new AuthenticationError("Please log in!");
