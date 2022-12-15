@@ -33,10 +33,10 @@ export default function CartItem (art) {
         } else {
             dispatch({
                 type: UPDATE_CART_QUANTITY,
-                _id: art._id,
+                _id: _id,
                 purhcaseQuantity: parseInt(value)
             });
-            idbPromise('card', 'put', {...art, purhcaseQuantity: parseInt(value)});
+            idbPromise('cart', 'put', {...art, purhcaseQuantity: parseInt(value)});
         }
     }
 
