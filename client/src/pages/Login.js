@@ -52,13 +52,15 @@ function Login(props) {
                     <Form.Label>Password</Form.Label>
                     <Form.Control onChange={handleChange} type="password" placeholder="Password" name="password"/>
                 </Form.Group>
-                <Button variant="primary" type="submit">
-                    Login
-                </Button>
-                <br></br>
-                <Form.Text className="text-muted">
-                <Link to="/signup">or Sign Up</Link>
-                </Form.Text>
+                <div className='text-center'>
+                    <Button variant="primary" type="submit">
+                        Login
+                    </Button>
+                    <br></br>
+                    <Form.Text className="text-muted">
+                        <Link to="/signup">or Sign Up</Link>
+                    </Form.Text>
+                </div>
             </Form>
         </section>
     )

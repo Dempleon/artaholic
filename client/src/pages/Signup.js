@@ -58,9 +58,11 @@ function Signup(props) {
                     <Form.Label>Password</Form.Label>
                     <Form.Control onChange={handleChange} type="password" placeholder="Password" name="password"/>
                 </Form.Group>
+                <div className='text-center'>
                 <Button variant="primary" type="submit" value="Submit">
                     Sign Up
                 </Button>
+                </div>
                 {/* <Button variant="primary">
                     <Link to="/login">Or Login</Link>
                 </Button> */}
