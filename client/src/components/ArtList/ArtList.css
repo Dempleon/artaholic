@@ -3,19 +3,11 @@
    height: 100px;
    float: left;
 }
-
-/* .artlist-container {
-    width: 100%
-} */
-
 .categorymenu {
     width: 90%;
     height: 100px;
     float: left;
 }
-
 .arts-container {
-    /* float: center; */
     display: inline-block;
-    
 }

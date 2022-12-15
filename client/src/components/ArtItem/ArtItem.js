@@ -9,10 +9,8 @@ import { alignPropType } from "react-bootstrap/esm/types";
 
 const styles = {
   art: {
-
     height: "25vh",
-    width: "auto"
-
+    width: "auto",
   },
   card: {
     backgroundColor: "transparent",
@@ -20,7 +18,7 @@ const styles = {
     paddingBottom: "35px",
     paddingTop: "15px",
     flexDirection: "column",
-    marginLeft: '8%',
+    marginLeft: "8%",
   },
 };
 
@@ -56,16 +54,15 @@ function ArtItem(item) {
     <div className="card gallery col-3 d-flex" style={styles.card}>
       <Link to={`/arts/${_id}`} className="col-6">
         <img style={styles.art} alt={name} src={`${image}`} />
-      </Link> <br/>
+      </Link>{" "}
+      <br />
       <div className="col-6 d-flex align-items-center">
         <div>
           <strong>{name}</strong>
-          {/* <div>
-          {quantity} {pluralize("item", quantity)} in stock
-        </div> */}
           <div>
             <strong>${price}</strong>
-          </div><br/>
+          </div>
+          <br />
           <div>
             <Button variant="outline-secondary" onClick={addToCart}>
               Add Art piece to cart

@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { useStoreContext } from "../../utils/GlobalState";
 import {
@@ -9,15 +9,11 @@ import { QUERY_CATEGORIES } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Dropdown from "react-bootstrap/Dropdown";
-import Tab from 'react-bootstrap/Tab';
-import Tabs from 'react-bootstrap/Tabs';
-
-// import Sonnet from '../../components/Sonnet';
 
 const styles = {
   marginLeft: "8%",
   marginTop: "15px",
-}
+};
 
 export default function GalleryMenu(props) {
   const [state, dispatch] = useStoreContext();
@@ -46,17 +42,15 @@ export default function GalleryMenu(props) {
   }, [categoryData, loading, dispatch]);
 
   const handleClick = (id, navbar) => {
-    // console.log(categories.id)
-      if (navbar) {
-          document.location.replace(`/category/${id}`);
-      } else {
-          dispatch({
-              type: UPDATE_CURRENT_CATEGORY,
-              currentCategory: id
-          });
-      }
+    if (navbar) {
+      document.location.replace(`/category/${id}`);
+    } else {
+      dispatch({
+        type: UPDATE_CURRENT_CATEGORY,
+        currentCategory: id,
+      });
+    }
   };
-  // const [key, setKey] = useState('arts');
 
   return (
     <NavDropdown title="Art Categories" id="basic-nav-dropdown" style={styles}>
@@ -71,7 +65,6 @@ export default function GalleryMenu(props) {
           {item.name}
         </NavDropdown.Item>
       ))}
-        </NavDropdown>
-  
+    </NavDropdown>
   );
 }

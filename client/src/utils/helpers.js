@@ -22,7 +22,6 @@ export function idbPromise(storeName, action, obj) {
       database.createObjectStore("arts", { keyPath: "_id" });
       database.createObjectStore("categories", { keyPath: "_id" });
       database.createObjectStore("cart", { keyPath: "_id" });
-      
     };
 
     request.onerror = function (err) {
