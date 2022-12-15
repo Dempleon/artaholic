@@ -8,14 +8,14 @@ import { idbPromise } from "../../utils/helpers";
 
 const styles = {
   art: {
-    maxWidth: "75vw",
+    width: "30vh",
   },
 };
 
 function ArtItem(item) {
   const [state, dispatch] = useStoreContext();
 
-  const { image, name, _id, price, quantity } = item;
+  let { image, name, _id, price, quantity } = item;
 
   const { cart } = state;
 
