@@ -1,3 +1,7 @@
 .selling-list{
     list-style-type: none;
 }
+
+#uploadedimage {
+    max-width: 100%;
+}
