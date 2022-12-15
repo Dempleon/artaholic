@@ -1,10 +1,12 @@
-import React, { useState, Component } from "react";
+import React, { useState, Component, useEffect } from "react";
+import { useStoreContext } from "../utils/GlobalState";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import GalleryCategory from "../components/GalleryCategory/GalleryCategory";
 import { ADD_ART } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
+import { UPDATE_CURRENT_IMAGE } from '../utils/actions'
 
 class CloudinaryUploadWidget extends Component {
     componentDidMount() {
@@ -44,13 +46,18 @@ class CloudinaryUploadWidget extends Component {
     }
 }
 
-
 function Sell() {
+    const [state, dispatch] = useStoreContext();
+    const { currentCategory } = state;
+
     const [show, setShow] = useState(false);
     const [formState, setFormState] = useState({
         name: '',
-
-        
+        image: '',
+        description: '',
+        price: '',
+        category: currentCategory,
+        quantity: ''
     })
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -58,40 +65,47 @@ function Sell() {
 
     const handleFormSubmit = async(event) => {
         event.preventDefault();
+        // const variables = {
+        //     name: formState.name,
+        //     description: formState.description,
+        //     category: currentCategory,
+        //     price: parseFloat(formState.price),
+        //     image: document.getElementById('uploadedimage').src,
+        //     quantity: parseInt(formState.quantity)
+        // }
+        // console.log(variables);
         const addArtResponse = await addArt({
             variables: {
                 name: formState.name,
                 description: formState.description,
+                category: currentCategory,
+                price: parseFloat(formState.price),
+                image: document.getElementById('uploadedimage').src, 
+                quantity: parseInt(formState.quantity)
             }
+        });
+        console.log(addArtResponse);
+        window.location.reload()
+    }
+
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setFormState({
+            ...formState,
+            [name]: value,
+            category: currentCategory
         })
     }
 
-    // const handleChange = (event) => {
-    //     const {}
-    // }
-
     return (
         <div className="d-flex">
-            <ul className="col-6">
-                <li>
-                    <img src=""></img>
-                    <p>Title</p>
-                    <strong>Price:</strong>
-                </li>
-                <li>
-                    <img src=""></img>
-                    <p>Title</p>
-                    <strong>Price:</strong>
-                </li>
-                <li>
-                    <img src="" />
-                    <p>Title</p>
-                    <strong>Price:</strong>
-                </li>
-            </ul>
-            <div className="col-6">
-                <img src="" />
-                <p>Name</p>
+            {/* <div className="col-6">
+                <h1>Welcome to the user page!</h1>
+            </div> */}
+            <div>
+                {/* <img src="" />
+                <p></p> */}
+                <h1>Click on this button to add your own art</h1>
                 <Button variant="primary" onClick={handleShow}>
                     Add new item
                 </Button>
@@ -101,30 +115,36 @@ function Sell() {
                         <Modal.Title>Selling Form</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form>
+                        <Form onSubmit={handleFormSubmit}>
                             <Form.Group className="mb-3" controlId="formBasicTitle">
                                 <Form.Label>Title</Form.Label>
-                                <Form.Control type="text" name="name"/>
+                                <Form.Control type="text" name="name" onChange={handleChange}/>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicDescription">
                                 <Form.Label>Description</Form.Label>
-                                <Form.Control type="text" name="description"/>
+                                <Form.Control type="text" name="description" onChange={handleChange}/>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicPrice">
                                 <Form.Label>Price</Form.Label>
-                                <Form.Control type="text" name="price"/>
+                                <Form.Control type="text" name="price" onChange={handleChange}/>
                             </Form.Group>
 
-                            <Form.Group className="mb-3" controlId="formBasicCategory">
-                                <GalleryCategory inNavbar={false} name="category"/>
+                            <Form.Group className="mb-3" controlId="formBasicTitle">
+                                <Form.Label>Quantity</Form.Label>
+                                <Form.Control type="text" name="quantity" onChange={handleChange}/>
+                            </Form.Group>
+
+                            <Form.Group className="mb-3" controlId="formBasicCategory" name="category" onChange={handleChange}>
+                                <GalleryCategory inNavbar={false}/>
+                                {/* <Form.Control placeholder="Category" disabled /> */}
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="formBasicArtImage">
 
-                                <CloudinaryUploadWidget />
-                                <img id="uploadedimage" src=""></img>
+                                <CloudinaryUploadWidget/>
+                                <img id="uploadedimage" src=""/>
 
                             </Form.Group>
 

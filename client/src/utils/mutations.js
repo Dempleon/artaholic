@@ -49,11 +49,9 @@ export const ADD_ART = gql`
                 category: $category
                 quantity: $quantity
         ) {
-                art {
-                    _id
-                    name
-                    image
-                }
+                _id
+                name
+                image
             }
     }
     
