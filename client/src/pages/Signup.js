@@ -45,22 +45,24 @@ function Signup(props) {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicLastname">
                     <Form.Label>Last Name</Form.Label>
-                    <Form.Control onChange={handleChange} type="lastname" placeholder="Last Name" name="lastName"/>
+                    <Form.Control onChange={handleChange} type="lastname" placeholder="Last Name" name="lastName" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control onChange={handleChange} type="email" placeholder="Enter email" name="email"/>
+                    <Form.Control onChange={handleChange} type="email" placeholder="Enter email" name="email" />
                     <Form.Text className="text-muted">
                         We'll never share your email with anyone else.
                     </Form.Text>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control onChange={handleChange} type="password" placeholder="Password" name="password"/>
+                    <Form.Control onChange={handleChange} type="password" placeholder="Password" name="password" />
                 </Form.Group>
-                <Button variant="primary" type="submit" value="Submit">
-                    Sign Up
-                </Button>
+                <div className='text-center'>
+                    <Button variant="primary" type="submit" value="Submit">
+                        Sign Up
+                    </Button>
+                </div>
                 {/* <Button variant="primary">
                     <Link to="/login">Or Login</Link>
                 </Button> */}

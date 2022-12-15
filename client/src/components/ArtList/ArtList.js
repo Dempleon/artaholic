@@ -41,9 +41,9 @@ function ArtList() {
 
   return (
     <div>
-      <h3>The art</h3>
+      {/* <h3>The art</h3> */}
       {state.arts.length ? (
-        <div>
+        <div className="d-flex flex-wrap">
           {filterArts().map((art) => (
             <ArtItem
               key={art._id}

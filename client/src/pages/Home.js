@@ -4,26 +4,28 @@ import HomeImage from "../components/assets/images/homeimage.jpeg";
 import "../styles/Home.css";
 
 const styles = {
+  homepage:{
+    padding:"80px"
+  },
   containerImg: {
     postion: "relative",
-    float: "right",
-    display: "flex",
-    margin: "80px",
   },
   image: {
-    width: "25vw",
+    height: "380px",
   },
-  containerMission: {
-    margin: "100px",
-  },
+  ourMissionValues:{
+    pElement:{
+      fontSize:"1.2rem"
+    }
+  }
 };
 
 function Home() {
   return (
-    <section className="d-flex homepage">
-        <div className="col-6 our-mission-values" style={styles.containerMission}>
-          <h2>Our Mission & Values</h2>
-          <p>
+    <section className="d-flex flex-wrap homepage" style={styles.homepage}>
+        <div className="col-12 col-md-7 our-mission-values">
+          <h2 className="text-center">Our Mission & Values</h2>
+          <p style={styles.ourMissionValues.pElement}>
             We support artists at all stages of their artistic journey. As a
             leading art supply company, we provide artists, educators, and
             students a platform where they can sell or share their thought about
@@ -43,7 +45,7 @@ function Home() {
             community events.
           </p>
         </div>
-        <div className="col-6 homepage-image" style={styles.containerImg}>
+        <div className="col-12 col-md-5 px-3 text-center homepage-image" style={styles.containerImg}>
           <img
             src={HomeImage}
             className="homepage-pic"
