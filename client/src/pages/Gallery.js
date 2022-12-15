@@ -85,21 +85,23 @@ function Gallery() {
 
     return (
         <>
-        <h1>Gallery page</h1>
+        <hr/>
+        <h1>{currentArt.name}</h1><hr/>
             {currentArt && cart ? (
                 <div className="container my-1">
                     <img
                         src={`${currentArt.image}`}
-                        alt={currentArt.name}
+                        alt={currentArt.image}
                         width="100%"
                     />
-                    <h2>{currentArt.name}</h2>
+                    {/* <h2>{currentArt.name}</h2> */}
+                    <hr/>
                     <p>
                         <strong>Price:</strong>${currentArt.price}{''}
                         <Button onClick={addToCart} variant="outline-secondary">Add to Cart</Button>{' '}
-                        <Button disabled={!cart.find((p) => p._id === currentArt._id)}
+                        {/* <Button disabled={!cart.find((p) => p._id === currentArt._id)}
                             onClick={removeFromCart}
-                            variant="outline-secondary">Remove From Cart</Button>{' '}
+                            variant="outline-secondary">Remove From Cart</Button>{' '} */}
                     </p>
 
                     

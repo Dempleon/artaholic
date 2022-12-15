@@ -5,19 +5,23 @@ import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
 import Button from "react-bootstrap/Button";
+import { alignPropType } from "react-bootstrap/esm/types";
 
 const styles = {
   art: {
-    maxHeight: "218px",
-    maxWidth: "95%",
+
+    height: "25vh",
+    width: "auto"
 
   },
   card: {
     backgroundColor: "transparent",
     border: "none",
-    padding: "20px",
-    flexDirection: "row"
-  }
+    paddingBottom: "35px",
+    paddingTop: "15px",
+    flexDirection: "column",
+    marginLeft: '8%',
+  },
 };
 
 function ArtItem(item) {
@@ -49,10 +53,10 @@ function ArtItem(item) {
   };
 
   return (
-    <div className="card gallery col-4 d-flex" style={styles.card}>
+    <div className="card gallery col-3 d-flex" style={styles.card}>
       <Link to={`/arts/${_id}`} className="col-6">
         <img style={styles.art} alt={name} src={`${image}`} />
-      </Link>
+      </Link> <br/>
       <div className="col-6 d-flex align-items-center">
         <div>
           <strong>{name}</strong>
@@ -61,9 +65,11 @@ function ArtItem(item) {
         </div> */}
           <div>
             <strong>${price}</strong>
-          </div>
+          </div><br/>
           <div>
-            <Button variant="outline-secondary" onClick={addToCart}>Add Art piece to cart</Button>
+            <Button variant="outline-secondary" onClick={addToCart}>
+              Add Art piece to cart
+            </Button>
           </div>
         </div>
       </div>

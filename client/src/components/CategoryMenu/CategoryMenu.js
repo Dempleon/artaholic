@@ -14,6 +14,10 @@ import Tabs from 'react-bootstrap/Tabs';
 
 // import Sonnet from '../../components/Sonnet';
 
+const styles = {
+  marginLeft: "8%",
+  marginTop: "15px",
+}
 
 export default function GalleryMenu(props) {
   const [state, dispatch] = useStoreContext();
@@ -55,7 +59,7 @@ export default function GalleryMenu(props) {
   // const [key, setKey] = useState('arts');
 
   return (
-    <NavDropdown title="Art Categories" id="basic-nav-dropdown">
+    <NavDropdown title="Art Categories" id="basic-nav-dropdown" style={styles}>
       <Dropdown.Item href="/arts">View All Amazing Arts!</Dropdown.Item>
       {categories.map((item) => (
         <NavDropdown.Item
