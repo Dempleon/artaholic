@@ -19,6 +19,15 @@ import StripeCheckout from "react-stripe-checkout";
 import Row from "react-bootstrap/Row";
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
+const styles = {
+    image: {
+    marginTop: "5%",
+   textAlign: "center"
+    },
+    name: {
+        marginTop:"5px"
+    }
+  }
 
 class TakeMoney extends React.Component {
     onToken = (token) => {
@@ -121,10 +130,10 @@ export default function Cart() {
 
     return (
         <div>
-            <h2>Cart</h2>
+            <h2 style={styles.image}>Cart</h2>
             {state.cart.length ? (
                 <>
-                    <div className='d-flex justify-content-center flex-wrap'>
+                    <div className='d-flex justify-content-center flex-wrap' style={styles.name}>
                         {state.cart.map((art) => (
                             <CartItem key={art._id} _id={art._id} name={art.name} price={art.price} image={art.image} quantity={art.purchaseQuantity} />
                         ))}
