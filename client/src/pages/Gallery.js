@@ -88,6 +88,11 @@ function Gallery() {
         <h1>Gallery page</h1>
             {currentArt && cart ? (
                 <div className="container my-1">
+                    <img
+                        src={`${currentArt.image}`}
+                        alt={currentArt.name}
+                        width="100%"
+                    />
                     <h2>{currentArt.name}</h2>
                     <p>
                         <strong>Price:</strong>${currentArt.price}{''}
@@ -97,10 +102,7 @@ function Gallery() {
                             variant="outline-secondary">Remove From Cart</Button>{' '}
                     </p>
 
-                    <img
-                        src={`/images/${currentArt.image}`}
-                        alt={currentArt.name}
-                    />
+                    
                 </div>
             ): null}
             {loading ? <p>Loading</p> : null}

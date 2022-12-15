@@ -60,7 +60,7 @@ function App() {
                 element={<Signup />}
               />
               <Route
-                path="/gallery"
+                path="/arts/:id"
                 element={<Gallery />}
               />
               <Route
@@ -73,10 +73,6 @@ function App() {
               />
               <Route
                 path="/arts"
-                element={<Arts />}
-              />
-              <Route
-                path="/arts/:id"
                 element={<Arts />}
               />
               <Route
