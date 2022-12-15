@@ -1,4 +1,5 @@
 import React, { useState, Component, useEffect } from "react";
+import "../styles/Sell.css";
 import { useStoreContext } from "../utils/GlobalState";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -7,7 +8,6 @@ import GalleryCategory from "../components/GalleryCategory/GalleryCategory";
 import { ADD_ART } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
 import { UPDATE_CURRENT_IMAGE } from '../utils/actions';
-import "../styles/Sell.css";
 
 class CloudinaryUploadWidget extends Component {
     componentDidMount() {
@@ -79,7 +79,6 @@ function Sell() {
         // }
         // console.log(variables);
 
-        // will upload image to Gallery section at the same time
         const addArtResponse = await addArt({
             variables: {
                 name: formState.name,

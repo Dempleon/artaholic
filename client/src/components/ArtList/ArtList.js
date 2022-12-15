@@ -41,28 +41,30 @@ function ArtList() {
     return state.arts.filter((art) => art.category._id === currentCategory);
   }
 
-  return (
-    <div>
-      {/* <h3>The art</h3> */}
-      {state.arts.length ? (
-        <div className="d-flex flex-wrap">
-          {filterArts().map((art) => (
-            <ArtItem
-              key={art._id}
-              _id={art._id}
-              image={art.image}
-              name={art.name}
-              price={art.price}
-              quantity={art.quantity}
-            />
-          ))}
-        </div>
-      ) : (
-        <div>
-          <h3>There is no art</h3>
-        </div>
-      )}
+  return (  <div>
+    <div className="">
+      <h3>The art</h3>
+      <CategoryMenu />
     </div>
+    {state.arts.length ? (
+      <div className="d-flex flex-wrap">
+        {filterArts().map((art) => (
+          <ArtItem
+            key={art._id}
+            _id={art._id}
+            image={art.image}
+            name={art.name}
+            price={art.price}
+            quantity={art.quantity}
+          />
+        ))}
+      </div>
+    ) : (
+      <div>
+        <h3>There is no art</h3>
+      </div>
+    )}
+  </div>
   );
 }
 
