@@ -47,39 +47,39 @@ function App() {
             <NavTabs>
             </NavTabs>
             <Routes>
-              <Route
+              <Route exact 
                 path="/"
                 element={<Home />}
               />
-              <Route
+              <Route exact 
                 path="/login"
                 element={<Login />}
               />
-              <Route
+              <Route exact 
                 path="/signup"
                 element={<Signup />}
               />
-              <Route
+              <Route exact 
                 path="/gallery"
                 element={<Gallery />}
               />
-              <Route
+              <Route exact 
                 path="/sell"
                 element={<Sell />}
               />
-              <Route
+              <Route exact 
                 path="/cart"
                 element={<Cart />}
               />
-              <Route
+              <Route exact 
                 path="/arts"
                 element={<Arts />}
               />
-              <Route
+              <Route exact 
                 path="/arts/:id"
                 element={<Arts />}
               />
-              <Route
+              <Route exact 
                 path="/category/:id"
                 element={<GalleryCategory />}
               />
