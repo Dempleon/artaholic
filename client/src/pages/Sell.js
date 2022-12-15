@@ -7,7 +7,13 @@ import Form from 'react-bootstrap/Form';
 import GalleryCategory from "../components/GalleryCategory/GalleryCategory";
 import { ADD_ART } from "../utils/mutations";
 import { useMutation } from "@apollo/client";
-import { UPDATE_CURRENT_IMAGE } from '../utils/actions';
+
+const styles = {
+    image: {
+      maxWidth: "100%",
+  
+    },
+  };
 
 class CloudinaryUploadWidget extends Component {
     componentDidMount() {
@@ -120,7 +126,7 @@ function Sell() {
                         const { name, price, img } = itemSrc;
                         return (
                             <li key={`sellingItem-${index}`} className="text-center">
-                                <img src={img} alt="" />
+                                <img style={styles.image} src={img} alt="" />
                                 <p>{name}</p>
                                 <strong>{price}</strong>
                             </li>
