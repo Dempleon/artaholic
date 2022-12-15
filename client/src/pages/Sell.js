@@ -51,6 +51,7 @@ function Sell() {
     const [state, dispatch] = useStoreContext();
     const { currentCategory } = state;
 
+
     const [show, setShow] = useState(false);
     const [formState, setFormState] = useState({
         name: '',

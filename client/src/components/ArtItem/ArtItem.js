@@ -1,11 +1,10 @@
-//Rui
 import React from "react";
 import { Link } from "react-router-dom";
 import { pluralize } from "../../utils/helpers";
 import { useStoreContext } from "../../utils/GlobalState";
 import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 import { idbPromise } from "../../utils/helpers";
-import Button from "react-bootstrap/button";
+import Button from "react-bootstrap/Button";
 
 const styles = {
   art: {
@@ -14,7 +13,7 @@ const styles = {
   card: {
     backgroundColor: "transparent",
     border: "none",
-    // margin: "20px",
+    padding: "20px",
     flexDirection: "row"
   }
 };

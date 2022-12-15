@@ -43,7 +43,7 @@ function ArtList() {
 
   return (  <div>
     <div className="">
-      <h3>The art</h3>
+      {/* <h3>The art</h3> */}
       <CategoryMenu />
     </div>
     {state.arts.length ? (
