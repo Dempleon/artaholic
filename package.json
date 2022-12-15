@@ -12,7 +12,8 @@
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "build": "cd client && npm run build",
-    "seed": "node server/seeds/seed.js"
+    "seed": "node server/seeds/seed.js",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,7 @@
   "bugs": {
     "url": "https://github.com/Dempleon/artaholic/issues"
   },
-  "homepage": "https://github.com/Dempleon/artaholic#readme",
+  "homepage": "https://artaholics.herokuapp.com/",
   "devDependencies": {
     "concurrently": "^5.1.0"
   },
