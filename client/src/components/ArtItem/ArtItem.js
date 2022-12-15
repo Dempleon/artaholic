@@ -8,7 +8,9 @@ import Button from "react-bootstrap/Button";
 
 const styles = {
   art: {
-    height: "218px",
+    maxHeight: "218px",
+    maxWidth: "95%",
+
   },
   card: {
     backgroundColor: "transparent",
