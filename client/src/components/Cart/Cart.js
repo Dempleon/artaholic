@@ -3,7 +3,6 @@ import { useLazyQuery } from "@apollo/client";
 import CartItem from "../CartItem/CartItem";
 import Auth from "../../utils/auth";
 import { useStoreContext } from "../../utils/GlobalState";
-import "./Cart.css";
 import { ADD_MULTIPLE_TO_CART } from "../../utils/actions";
 import { QUERY_CHECKOUT } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";

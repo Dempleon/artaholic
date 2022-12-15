@@ -1,6 +1,5 @@
 import React from "react";
 import HomeImage from "../components/assets/images/homeimage.jpeg";
-import "../styles/Home.css";
 
 const styles = {
   homepage: {
