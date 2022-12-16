@@ -41,22 +41,22 @@ npm run develop
 npm run start
 ```
 ## Usage
-To use the application, Users must first create an account, or login.
+To use the application, Users must first create an account, or login.<br>
 ![login](./site_images/artaholics_signup.JPG)<br>
 
-Once they create an account, users can then see the sell tab.
+Once they create an account, users can then see the sell tab.<br>
 ![intro](./site_images/artaholics%20intro.JPG)<br>
 
-Users can view all the art in the gallery
+Users can view all the art in the gallery<br>
 ![gallery](./site_images/artaholics-galarry.JPG)<br>
 
-If a user wants to post their art for sale they can fill out the sell form
+If a user wants to post their art for sale they can fill out the sell form<br>
 ![sell](./site_images/artaholics%20sell.JPG)<br>
 
-In the cart page, Users can checkout for all of the art in the cart or remove them.
+In the cart page, Users can checkout for all of the art in the cart or remove them.<br>
 ![cart](./site_images/artaholics%20cart.JPG)<br>
 
-If a user wants to checkout, they can pay through the stripe platform.
+If a user wants to checkout, they can pay through the stripe platform.<br>
 ![stripe](./site_images/artaholics%20stripe.JPG)<br>
 
 
